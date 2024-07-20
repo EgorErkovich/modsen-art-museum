@@ -1,0 +1,112 @@
+{
+    "root": true,
+    "extends": [
+        "airbnb-base",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "noInlineConfig": true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true,
+        "node": true
+    },
+    "plugins": ["@typescript-eslint", "react", "react-hooks"],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+              "trailingComma": "es5",
+              "tabWidth": 2,
+              "semi": true,
+              "singleQuote": true,
+              "printWidth": 100
+            },
+            {
+              "usePrettierrc": false
+            }
+        ],
+        "import/extensions": "off",
+        "padding-line-between-statements": [
+            "error",
+            {
+              "blankLine": "always",
+              "prev": [
+                "block",
+                "block-like",
+                "cjs-export",
+                "class",
+                "export",
+                "import"
+              ],
+              "next": "*"
+            },
+            { "blankLine": "any", "prev": ["export", "import"], "next": ["export", "import"] },
+            { "blankLine": "always", "prev": "*", "next": "return" }
+        ],
+        "class-methods-use-this": ["error", { "enforceForClassFields": false }],
+        "lines-between-class-members": [
+            "error",
+            {
+              "enforce": [
+                { "blankLine": "always", "prev": "*", "next": "method" },
+                { "blankLine": "always", "prev": "method", "next": "*" },
+                { "blankLine": "always", "prev": "field", "next": "field" }
+              ]
+            },
+            { "exceptAfterSingleLine": true }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+              "args": "all",
+              "argsIgnorePattern": "^_",
+              "caughtErrors": "all",
+              "caughtErrorsIgnorePattern": "^_",
+              "destructuredArrayIgnorePattern": "^_",
+              "varsIgnorePattern": "^_",
+              "ignoreRestSiblings": true
+            }
+        ],
+        "no-use-before-define": "off",
+        "max-len": "off",
+        "no-console": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "comma-dangle": ["error", "only-multiline"],
+        "react/prop-types": "off",
+        "react/display-name": "off",
+        "no-unused-vars": "off",
+        "no-nested-ternary": "off",
+        "import/no-unresolved": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/ban-ts-comment": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-var-requires": "off",
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "import/no-extraneous-dependencies": "off",
+        "default-param-last": "off",
+        "no-plusplus": "off"
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
+}
