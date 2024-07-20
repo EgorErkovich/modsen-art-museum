@@ -10,7 +10,7 @@
         "lint:fix": "eslint --ext ts,tsx --fix src",
         "preview": "vite preview",
         "prettier": "prettier --write src",
-        "prepare": "cd .. && husky install modsen-art-museum/.husky",
+        "prepare": "cd .. && husky modsen-art-museum/.husky",
         "test": "vitest run",
         "coverage": "vitest run --coverage"
     },
