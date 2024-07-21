@@ -1,13 +1,14 @@
 import { Logo, HeaderOptions } from '../../index';
-import { HeaderContentBox, StyledHeader } from './styled';
+import HeaderFooterContentBox from '../shared/styled';
+import StyledHeader from './styled';
 
 const Header = () => {
   return (
     <StyledHeader>
-      <HeaderContentBox>
-        <Logo />
+      <HeaderFooterContentBox>
+        <Logo museumTextColor="white" />
         <HeaderOptions />
-      </HeaderContentBox>
+      </HeaderFooterContentBox>
     </StyledHeader>
   );
 };

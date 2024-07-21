@@ -71,7 +71,7 @@ const LogoMuseumText = styled.svg`
   height: 15px;
 
   path {
-    fill: white;
+    fill: ${(props) => props.color || 'black'};
   }
 `;
 

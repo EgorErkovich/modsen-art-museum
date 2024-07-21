@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const StyledHeader = styled.div`
+const StyledFooter = styled.div`
   height: 127px;
   width: 100%;
-  background: linear-gradient(90deg, #343333 38.05%, #484848 69.22%, #282828 98.98%);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,4 +17,4 @@ const StyledHeader = styled.div`
   }
 `;
 
-export default StyledHeader;
+export default StyledFooter;
