@@ -6,3 +6,5 @@ export { default as DetailInfoPage } from './pages/detailInfoPage/detailInfoPage
 export { default as FavoritesPage } from './pages/favoritesPage/favoritesPage';
 export { default as NotFoundPage } from './pages/notFoundPage/notFoundPage';
 export { default as Layout } from './app/layout/layout';
+export { default as Logo } from './components/logo/logo';
+export { default as HeaderOptions } from './components/headerOptions/headerOptions';

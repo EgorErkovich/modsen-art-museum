@@ -1,7 +1,14 @@
-const Header = () => {
+import { Logo, HeaderOptions } from '../../index';
+import { HeaderContentBox, StyledHeader } from './styled';
 
+const Header = () => {
   return (
-    <p>header</p>
+    <StyledHeader>
+      <HeaderContentBox>
+        <Logo />
+        <HeaderOptions />
+      </HeaderContentBox>
+    </StyledHeader>
   );
 };
 
