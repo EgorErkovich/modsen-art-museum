@@ -20,4 +20,10 @@ const StyledMainGallery = styled.div`
   }
 `;
 
-export default StyledMainGallery;
+const StyledMainGalleryBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export { StyledMainGallery, StyledMainGalleryBox };

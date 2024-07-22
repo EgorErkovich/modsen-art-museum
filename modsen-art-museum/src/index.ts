@@ -13,3 +13,4 @@ export { default as SearchBar } from './components/searchBar/searchBar';
 export { default as BlockTitle } from './components/blockTitle/blockTitle';
 export { default as MainGallery } from './components/mainGallery/mainGallery';
 export { default as MainGalleryCard } from './components/mainGalleryCard/mainGalleryCard';
+export { default as Pagination } from './components/pagination/pagination';

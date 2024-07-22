@@ -1,13 +1,16 @@
-import { MainGalleryCard } from '../../index';
-import StyledMainGallery from './styled';
+import { MainGalleryCard, Pagination } from '../../index';
+import { StyledMainGallery, StyledMainGalleryBox } from './styled';
 
 const MainGallery = () => {
   return (
-    <StyledMainGallery>
-      <MainGalleryCard />
-      <MainGalleryCard />
-      <MainGalleryCard />
-    </StyledMainGallery>
+    <StyledMainGalleryBox>
+      <StyledMainGallery>
+        <MainGalleryCard />
+        <MainGalleryCard />
+        <MainGalleryCard />
+      </StyledMainGallery>
+      <Pagination />
+    </StyledMainGalleryBox>
   );
 };
 
