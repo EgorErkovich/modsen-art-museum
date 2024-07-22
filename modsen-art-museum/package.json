@@ -86,6 +86,10 @@
         "vitest": "^1.6.0"
     },
     "optionalDependencies": {
-        "@esbuild/linux-x64": "0.14.0"
-    }
+        "@esbuild/linux-x64": "0.15.0"
+    },
+    "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
 }
