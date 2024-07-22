@@ -59,7 +59,8 @@ const LogoFoundation = styled.svg`
 
 const LogoTextBox = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 7px;
+  align-items: flex-end;
 
   @media (max-width: 500px) {
     flex-direction: column;

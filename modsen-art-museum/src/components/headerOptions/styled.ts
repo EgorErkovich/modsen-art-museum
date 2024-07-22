@@ -16,7 +16,7 @@ const HeaderOptionsText = styled.span`
   position: relative;
   top: 2px;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 19.36px;
   text-align: left;

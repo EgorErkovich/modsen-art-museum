@@ -1,7 +1,11 @@
-const HomePage = () => {
+import { MainPageTitle, SearchBar } from '../../index';
 
+const HomePage = () => {
   return (
-    <p>home page</p>
+    <>
+      <MainPageTitle />
+      <SearchBar />
+    </>
   );
 };
 

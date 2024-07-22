@@ -8,3 +8,5 @@ export { default as NotFoundPage } from './pages/notFoundPage/notFoundPage';
 export { default as Layout } from './app/layout/layout';
 export { default as Logo } from './components/logo/logo';
 export { default as HeaderOptions } from './components/headerOptions/headerOptions';
+export { default as MainPageTitle } from './components/mainPageTitle/mainPageTitle';
+export { default as SearchBar } from './components/searchBar/searchBar';
