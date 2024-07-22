@@ -17,3 +17,5 @@ export { default as Pagination } from './components/pagination/pagination';
 export { default as OtherWorks } from './components/otherWorks/otherWorks';
 export { default as SmallCard } from './components/smallCard/smallCard';
 export { default as FavoritesPageTitle } from './components/favoritesPageTitle/favoritesPageTitle';
+export { default as DetailedImg } from './components/detailedImg/detailedImg';
+export { default as DetailedInfo } from './components/detailedInfo/detailedInfo';

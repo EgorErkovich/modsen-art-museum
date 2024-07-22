@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledFooter = styled.div`
   height: 127px;
   width: 100%;
-  margin-top: 120px;
+  margin-top: clamp(100px, 8.33vw, 120px);
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -11,6 +11,7 @@ const StyledFooter = styled.div`
 
   @media (max-width: 768px) {
     height: 100px;
+    margin-top: clamp(0px, 13vw, 100px);
   }
 
   @media (max-width: 390px) {

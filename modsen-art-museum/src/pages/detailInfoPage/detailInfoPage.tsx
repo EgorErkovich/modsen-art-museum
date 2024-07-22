@@ -1,7 +1,12 @@
-const DetailInfoPage = () => {
+import { DetailedImg, DetailedInfo } from '../../index';
+import StyledDetailInfoPage from './styled';
 
+const DetailInfoPage = () => {
   return (
-    <p>detailed info page</p>
+    <StyledDetailInfoPage>
+      <DetailedImg />
+      <DetailedInfo />
+    </StyledDetailInfoPage>
   );
 };
 

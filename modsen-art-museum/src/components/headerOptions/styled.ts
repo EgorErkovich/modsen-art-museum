@@ -13,7 +13,6 @@ const HeaderHomeFavorites = styled.div`
 `;
 
 const HeaderOptionsText = styled.span`
-  position: relative;
   top: 2px;
   font-family: Inter;
   font-size: 18px;
@@ -41,7 +40,9 @@ const HomeFavoritesImgBox = styled.div`
   opacity: 0px;
 `;
 
-const HomeImgBox = styled(HomeFavoritesImgBox)``;
+const HomeImgBox = styled(HomeFavoritesImgBox)`
+  position: relative;
+`;
 
 const FavoritesImgBox = styled(HomeFavoritesImgBox)``;
 
@@ -75,7 +76,6 @@ const HomeImgDoor = styled.svg`
   width: 8px;
   height: 13px;
   position: absolute;
-  margin-left: 1px;
 
   path {
     stroke: #e0a449;
