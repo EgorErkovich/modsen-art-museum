@@ -1,15 +1,20 @@
-import { BlockTitle, MainGallery, MainPageTitle, SearchBar } from '../../index';
+import { BlockTitle, MainGallery, MainPageTitle, OtherWorks, SearchBar } from '../../index';
 
 const HomePage = () => {
-  const title = 'Our special gallery';
-  const subtitle = 'Topics for you';
+  const titleGallery = 'Our special gallery';
+  const subtitleGallery = 'Topics for you';
+
+  const titleOther = 'Other works for you';
+  const subtitleOther = 'Here some more';
 
   return (
     <>
       <MainPageTitle />
       <SearchBar />
-      <BlockTitle title={title} subtitle={subtitle} />
+      <BlockTitle title={titleGallery} subtitle={subtitleGallery} />
       <MainGallery />
+      <BlockTitle title={titleOther} subtitle={subtitleOther} />
+      <OtherWorks />
     </>
   );
 };

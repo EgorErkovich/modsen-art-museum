@@ -1,59 +1,26 @@
 import styled from 'styled-components';
 
-const StyledMainGalleryCard = styled.div`
+const StyledSmallCard = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
-  width: clamp(220px, 27.1vw, 387px);
-  height: clamp(300px, 36vw, 514px);
+  justify-content: space-between;
+  gap: clamp(12px, 1.11vw, 16px);
+  border: 1px 0px 0px 0px;
+  background-color: #ffffff;
   border: 1px solid #f0f1f1;
-  aspect-ratio: 1 / 1.3;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-  }
 `;
 
 const CardImg = styled.div`
-  width: 100%;
-  aspect-ratio: 1 / 1.15;
+  width: 80px;
+  aspect-ratio: 1 / 1;
   height: auto;
-  max-height: 444px;
   background-image: url('https://www.artic.edu/iiif/2/e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9/full/843,/0/default.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  @media (max-width: 768px) {
-    max-height: none;
-  }
-`;
-
-const CardInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 86%;
-  max-width: 334px;
-  max-height: 132px;
-  height: auto;
-  aspect-ratio: 1 / 0.4;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: calc((5 / 112) * 100vw - (240 / 7) * 1px);
-  padding: clamp(16px, 2.22vw, 32px) clamp(12px, 1.67vw, 24px) clamp(16px, 2.22vw, 32px)
-    clamp(12px, 1.67vw, 24px);
-  gap: 8px;
-  background-color: white;
-  border: 1px solid #f0f1f1;
-
-  @media (max-width: 768px) {
-    max-width: none;
-    max-height: none;
-    margin-bottom: 0px;
-  }
 `;
 
 const InfoUser = styled.div`
@@ -157,9 +124,8 @@ const CardInfoIcon = styled.div`
 `;
 
 export {
-  StyledMainGalleryCard,
+  StyledSmallCard,
   CardImg,
-  CardInfo,
   InfoUser,
   UserArtArtistBox,
   InfoUserArt,

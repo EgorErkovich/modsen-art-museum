@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const StyledFooter = styled.div`
   height: 127px;
   width: 100%;
-  background: #ffffff;
+  margin-top: 120px;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
