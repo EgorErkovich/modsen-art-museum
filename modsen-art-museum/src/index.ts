@@ -16,3 +16,4 @@ export { default as MainGalleryCard } from './components/mainGalleryCard/mainGal
 export { default as Pagination } from './components/pagination/pagination';
 export { default as OtherWorks } from './components/otherWorks/otherWorks';
 export { default as SmallCard } from './components/smallCard/smallCard';
+export { default as FavoritesPageTitle } from './components/favoritesPageTitle/favoritesPageTitle';

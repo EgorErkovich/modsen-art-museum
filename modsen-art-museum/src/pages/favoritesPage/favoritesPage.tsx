@@ -1,7 +1,15 @@
+import { BlockTitle, FavoritesPageTitle, OtherWorks } from '../../index';
+
 const FavoritesPage = () => {
+  const titleSaved = 'Your favorites list';
+  const subtitleSaved = 'Saved by you';
 
   return (
-    <p>favorites page</p>
+    <>
+      <FavoritesPageTitle />
+      <BlockTitle title={titleSaved} subtitle={subtitleSaved} />
+      <OtherWorks />
+    </>
   );
 };
 
