@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledDetailedImg = styled.div`
+  position: relative;
   width: clamp(300px, 34.6vw, 497px);
   aspect-ratio: 1 / 1.15;
   height: auto;
@@ -14,4 +15,48 @@ const StyledDetailedImg = styled.div`
   }
 `;
 
-export default StyledDetailedImg;
+const FavoritesImgBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 24px;
+  height: 24px;
+  gap: 0px;
+  opacity: 0px;
+`;
+
+const FavoritesImg = styled.svg`
+  width: 17px;
+  height: 21px;
+
+  path {
+    stroke: #e0a449;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+`;
+
+const CardInfoIcon = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: clamp(45px, 4.1vw, 59px);
+  height: clamp(45px, 4.1vw, 59px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17.54px;
+  gap: 10.97px;
+  border-radius: 35.09px;
+  opacity: 0px;
+  background-color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: clamp(45px, 7.68vw, 59px);
+    height: clamp(45px, 7.68vw, 59px);
+  }
+`;
+
+export { StyledDetailedImg, FavoritesImgBox, FavoritesImg, CardInfoIcon };
