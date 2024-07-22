@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledInput = styled.input`
   display: flex;
   align-items: center;
-  width: 762px;
+  width: clamp(600px, 53vw, 762px);
   height: 64px;
   padding: 16px;
   gap: 0px;
@@ -18,10 +18,18 @@ const StyledInput = styled.input`
   font-weight: 400;
   font-size: 16px;
 
+  margin-top: 40px;
+
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;
     color: #39393980;
+  }
+
+  @media (max-width: 768px) {
+    height: 48px;
+    width: 80%;
+    background-size: 25px;
   }
 `;
 

@@ -8,15 +8,17 @@ const StyledMainPageTitle = styled.h1`
   text-align: center;
   color: #393939;
   width: clamp(500px, 47.5vw, 684px);
+  margin-top: 120px;
 
   span {
     color: #f17900;
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(32px, 6.25vw, 48px);
+    font-size: clamp(38px, 6.25vw, 48px);
     width: 80%;
     line-height: 48px;
+    margin-top: 80px;
   }
 `;
 
