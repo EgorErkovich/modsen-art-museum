@@ -1,3 +1,4 @@
+import { IMainGalleryCardProps, trimArtistName, trimArtName } from '../../index';
 import {
   StyledSmallCard,
   CardImg,
@@ -10,16 +11,19 @@ import {
   UserArtArtistBox,
 } from './styled';
 
-const SmallCard = () => {
+const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData }) => {
+  const defaultImageSrc =
+    'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
+
   return (
     <StyledSmallCard>
-      <CardImg />
+      <CardImg style={{ backgroundImage: `url(${cardData.src || defaultImageSrc})` }} />
       <InfoUser>
         <UserArtArtistBox>
-          <InfoUserArt>Charles V, bust length...</InfoUserArt>
-          <InfoUserArtist>Giovanni Britto</InfoUserArtist>
+          <InfoUserArt>{trimArtName(cardData.artName, 25)}</InfoUserArt>
+          <InfoUserArtist>{trimArtistName(cardData.artist)}</InfoUserArtist>
         </UserArtArtistBox>
-        Public
+        {cardData.isPublic ? 'Public' : 'Private'}
       </InfoUser>
       <CardInfoIcon>
         <FavoritesImgBox>

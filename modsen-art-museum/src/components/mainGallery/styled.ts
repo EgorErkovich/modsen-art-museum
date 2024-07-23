@@ -37,13 +37,26 @@ const spin = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
+const LoaderBox = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+
 const Loader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
+
+  width: clamp(220px, 27.1vw, 387px);
+  height: clamp(300px, 36vw, 514px);
+  aspect-ratio: 1 / 1.3;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Spinner = styled.div`
@@ -66,4 +79,4 @@ const LoadingText = styled.span`
   color: #393939;
 `;
 
-export { StyledMainGallery, StyledMainGalleryBox, Loader, Spinner, LoadingText };
+export { StyledMainGallery, StyledMainGalleryBox, Loader, Spinner, LoadingText, LoaderBox };

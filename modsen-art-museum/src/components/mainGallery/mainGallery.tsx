@@ -6,7 +6,14 @@ import {
   trimArtistName,
   trimArtName,
 } from '../../index';
-import { Loader, LoadingText, Spinner, StyledMainGallery, StyledMainGalleryBox } from './styled';
+import {
+  Loader,
+  LoaderBox,
+  LoadingText,
+  Spinner,
+  StyledMainGallery,
+  StyledMainGalleryBox,
+} from './styled';
 
 const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
   const cards = useSelector((state: IRootState) => state.pagination.cards);
@@ -18,10 +25,12 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
     <StyledMainGalleryBox>
       <StyledMainGallery>
         {isLoading ? (
-          <Loader>
-            <Spinner />
-            <LoadingText>Loading...</LoadingText>
-          </Loader>
+          <LoaderBox>
+            <Loader>
+              <Spinner />
+              <LoadingText>Loading...</LoadingText>
+            </Loader>
+          </LoaderBox>
         ) : (
           cards.map((cardData: IApiCardData) => {
             const imageSrc = cardData.image_id

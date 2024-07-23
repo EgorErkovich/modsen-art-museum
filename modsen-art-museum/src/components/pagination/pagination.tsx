@@ -25,7 +25,6 @@ const Pagination: React.FC<PaginationProps> = ({ setIsLoading }) => {
         const data = await response.json();
 
         dispatch(setCards(data.data));
-        console.log(data.data);
         setTotalPages(data.pagination.total_pages);
       } catch (error) {
         console.error('Loading error:', error);
