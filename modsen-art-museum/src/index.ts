@@ -25,5 +25,6 @@ export type {
   IApiCardData,
   IPaginationState,
   IRootState,
+  IDetailedInfoProps,
 } from './utils/interfaces';
 export { trimArtName, trimArtistName } from './utils/utils';

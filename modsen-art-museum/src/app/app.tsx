@@ -8,7 +8,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomePage />} />
-          <Route path="detailes" element={<DetailInfoPage />} />
+          <Route path="details/:id" element={<DetailInfoPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

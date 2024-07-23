@@ -1,3 +1,4 @@
+import { IDetailedInfoProps } from '../../index';
 import {
   ArtInfo,
   ArtInfoArtist,
@@ -8,33 +9,31 @@ import {
   StyledDetailedInfo,
 } from './styled';
 
-const DetailedInfo = () => {
+const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
   return (
     <StyledDetailedInfo>
       <ArtInfo>
-        <ArtInfoOverviewTitle>
-          Charles V, bust length, holding a sword, facing right
-        </ArtInfoOverviewTitle>
-        <ArtInfoArtist>Giovanni Britto</ArtInfoArtist>
-        <ArtInfoYears>1535–45</ArtInfoYears>
+        <ArtInfoOverviewTitle>{artDetails.artName}</ArtInfoOverviewTitle>
+        <ArtInfoArtist>{artDetails.artist}</ArtInfoArtist>
+        <ArtInfoYears>{artDetails.years}</ArtInfoYears>
       </ArtInfo>
 
       <Overview>
         <ArtInfoOverviewTitle>Overview</ArtInfoOverviewTitle>
         <OverviewData>
-          Artist nacionality: <span>German</span>
+          Artist nationality: <span>{artDetails.nationality}</span>
         </OverviewData>
         <OverviewData>
-          Dimensions: <span>Sheet: 19 3/8 × 13 11/16 in. (49.2 × 34.8 cm)</span>
+          Dimensions: <span>{artDetails.dimensions}</span>
         </OverviewData>
         <OverviewData>
-          Credit Line: <span>Rogers Fund, 1917</span>
+          Credit Line: <span>{artDetails.creditLine}</span>
         </OverviewData>
         <OverviewData>
-          Repository: <span>Metropolitan Museum of Art, New York, NY</span>
+          Repository: <span>{artDetails.repository}</span>
         </OverviewData>
         <OverviewData>
-          <span>Public</span>
+          <span>{artDetails.isPublic ? 'Public' : 'Private'}</span>
         </OverviewData>
       </Overview>
     </StyledDetailedInfo>

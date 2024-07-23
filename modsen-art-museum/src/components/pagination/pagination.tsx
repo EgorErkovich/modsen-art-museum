@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PaginationContainer, Button, Arrow, PageNumbers, PageNumber } from './styled';
 import { setCurrentPage, setCards } from '../../store/store';
+import { IRootState } from '../../index';
 
 interface PaginationProps {
   setIsLoading: (loading: boolean) => void;
@@ -9,9 +10,11 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ setIsLoading }) => {
   const dispatch = useDispatch();
+  const currentPage = useSelector((state: IRootState) => state.pagination.currentPage);
+
   const [totalPages, setTotalPages] = useState(0);
-  const [startPage, setStartPage] = useState(1);
-  const [activePage, setActivePage] = useState(1);
+  const [startPage, setStartPage] = useState(currentPage);
+  const [activePage, setActivePage] = useState(currentPage);
 
   const ITEMS_PER_PAGE = 3;
 

@@ -33,7 +33,10 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
     }
   }, [dispatch]);
 
-  const handleToggleFavorite = (cardId: number) => {
+  const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
+
     const updatedFavorites = favoriteImageIds.includes(cardId)
       ? favoriteImageIds.filter((id) => id !== cardId)
       : [...favoriteImageIds, cardId];
@@ -76,7 +79,7 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
                   isPublic: cardData.is_public_domain,
                   isFavorite,
                 }}
-                onToggleFavorite={() => handleToggleFavorite(cardData.id)}
+                onToggleFavorite={handleToggleFavorite}
               />
             );
           })

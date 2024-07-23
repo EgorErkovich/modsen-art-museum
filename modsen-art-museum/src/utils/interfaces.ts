@@ -7,9 +7,17 @@ export interface IMainCardData {
   isFavorite: boolean;
 }
 
+export interface IDetailedInfoProps extends IMainCardData {
+  years: string;
+  nationality: string;
+  dimensions: string;
+  creditLine: string;
+  repository: string;
+}
+
 export interface IMainGalleryCardProps {
   cardData: IMainCardData;
-  onToggleFavorite: () => void;
+  onToggleFavorite: (id: number, event: React.MouseEvent) => void;
 }
 
 export interface IApiCardData {

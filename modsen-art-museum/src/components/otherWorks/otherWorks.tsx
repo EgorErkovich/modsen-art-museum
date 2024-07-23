@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IApiCardData, IMainCardData, IRootState, SmallCard } from '../../index';
-import StyledOtherWorks from './styled';
 import { addFavoriteId, removeFavoriteId } from '../../store/store';
+import { LoaderBox, Loader, Spinner, LoadingText, StyledOtherWorks } from './styled';
 
 const OtherWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);
@@ -37,7 +37,9 @@ const OtherWorks = () => {
     fetchData();
   }, [fetchData]);
 
-  const handleToggleFavorite = (cardId: number) => {
+  const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
     const updatedFavorites = favoriteImageIds.includes(cardId)
       ? favoriteImageIds.filter((id) => id !== cardId)
       : [...favoriteImageIds, cardId];
@@ -52,7 +54,14 @@ const OtherWorks = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <LoaderBox>
+        <Loader>
+          <Spinner />
+          <LoadingText>Loading...</LoadingText>
+        </Loader>
+      </LoaderBox>
+    );
   }
 
   return (
@@ -64,7 +73,7 @@ const OtherWorks = () => {
           <SmallCard
             key={work.id}
             cardData={{ ...work, isFavorite }}
-            onToggleFavorite={() => handleToggleFavorite(work.id)}
+            onToggleFavorite={handleToggleFavorite}
           />
         );
       })}

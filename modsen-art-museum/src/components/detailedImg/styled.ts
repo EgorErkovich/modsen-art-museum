@@ -38,7 +38,7 @@ const FavoritesImg = styled.svg`
   }
 `;
 
-const CardInfoIcon = styled.div`
+const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -51,7 +51,15 @@ const CardInfoIcon = styled.div`
   gap: 10.97px;
   border-radius: 35.09px;
   opacity: 0px;
-  background-color: #ffffff;
+  background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#ffffff')};
+  cursor: pointer;
+  transition: 300ms;
+
+  &:hover {
+    background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#f9f9f9')};
+    transition: 300ms;
+    filter: brightness(0.9);
+  }
 
   @media (max-width: 768px) {
     width: clamp(45px, 7.68vw, 59px);
