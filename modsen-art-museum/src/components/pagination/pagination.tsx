@@ -1,10 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { PaginationContainer, Button, Arrow, PageNumbers, PageNumber } from './styled';
+import { setCurrentPage, setCards } from '../../store/store';
 
-const Pagination = () => {
-  const totalPages = 10;
+interface PaginationProps {
+  setIsLoading: (loading: boolean) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ setIsLoading }) => {
+  const dispatch = useDispatch();
+  const [totalPages, setTotalPages] = useState(0);
   const [startPage, setStartPage] = useState(1);
   const [activePage, setActivePage] = useState(1);
+
+  const ITEMS_PER_PAGE = 3;
+
+  const fetchData = useCallback(
+    async (page: number) => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `https://api.artic.edu/api/v1/artworks?limit=${ITEMS_PER_PAGE}&page=${page}&fields=id,title,artist_display,image_id,is_public_domain`
+        );
+        const data = await response.json();
+
+        dispatch(setCards(data.data));
+        console.log(data.data);
+        setTotalPages(data.pagination.total_pages);
+      } catch (error) {
+        console.error('Loading error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [dispatch, setIsLoading]
+  );
+
+  useEffect(() => {
+    fetchData(activePage);
+  }, [fetchData, activePage]);
 
   const handleNext = () => {
     if (startPage < totalPages - 3) {
@@ -20,11 +54,13 @@ const Pagination = () => {
 
   const handlePageClick = (pageNumber: number) => {
     setActivePage(pageNumber);
-    console.log(pageNumber);
+    dispatch(setCurrentPage(pageNumber));
   };
 
   const isVisibleLeft = startPage > 1;
   const isVisibleRight = startPage < totalPages - 3;
+
+  const visiblePages = Array.from({ length: 4 }, (_, index) => startPage + index);
 
   return (
     <PaginationContainer>
@@ -32,19 +68,15 @@ const Pagination = () => {
         <Arrow $direction="left" $isVisible={isVisibleLeft} />
       </Button>
       <PageNumbers>
-        {Array.from({ length: 4 }, (_, index) => {
-          const pageNumber = startPage + index;
-
-          return (
-            <PageNumber
-              key={index}
-              onClick={() => handlePageClick(pageNumber)}
-              $active={pageNumber === activePage}
-            >
-              {pageNumber}
-            </PageNumber>
-          );
-        })}
+        {visiblePages.map((pageNumber) => (
+          <PageNumber
+            key={pageNumber}
+            onClick={() => handlePageClick(pageNumber)}
+            $active={pageNumber === activePage}
+          >
+            {pageNumber}
+          </PageNumber>
+        ))}
       </PageNumbers>
       <Button onClick={handleNext} disabled={!isVisibleRight}>
         <Arrow $direction="right" $isVisible={isVisibleRight} />

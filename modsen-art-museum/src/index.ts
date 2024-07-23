@@ -19,3 +19,11 @@ export { default as SmallCard } from './components/smallCard/smallCard';
 export { default as FavoritesPageTitle } from './components/favoritesPageTitle/favoritesPageTitle';
 export { default as DetailedImg } from './components/detailedImg/detailedImg';
 export { default as DetailedInfo } from './components/detailedInfo/detailedInfo';
+export type {
+  IMainGalleryCardProps,
+  IMainCardData,
+  IApiCardData,
+  IPaginationState,
+  IRootState,
+} from './utils/interfaces';
+export { trimArtName, trimArtistName } from './utils/utils';

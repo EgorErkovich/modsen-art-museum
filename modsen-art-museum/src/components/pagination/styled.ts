@@ -3,9 +3,17 @@ import styled from 'styled-components';
 const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 25px;
-  width: 182px;
+  width: clamp(700px, 90vw, 1280px);
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+
+  @media (max-width: 500px) {
+    width: 80%;
+  }
 `;
 
 const Button = styled.button`
@@ -19,6 +27,7 @@ const Button = styled.button`
 const PageNumbers = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0 10px; //Добавлено для расстояния между стрелками и номерами страниц
 `;
 
 const PageNumber = styled.button<{ $active?: boolean }>`
@@ -48,6 +57,9 @@ const Arrow = styled.div<{ $direction: 'left' | 'right'; $isVisible: boolean }>`
   opacity: 1;
   transform: ${(props) => (props.$direction === 'right' ? 'rotate(45deg)' : 'rotate(-135deg)')};
   display: ${(props) => (props.$isVisible ? 'block' : 'none')};
+
+  // Добавьте немного отступа для улучшения внешнего вида
+  margin: 0 5px;
 `;
 
 export { PaginationContainer, Button, PageNumbers, PageNumber, Arrow };

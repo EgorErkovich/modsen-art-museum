@@ -1,3 +1,4 @@
+import { IMainGalleryCardProps } from '../../index';
 import {
   StyledMainGalleryCard,
   CardImg,
@@ -11,17 +12,17 @@ import {
   CardInfoIcon,
 } from './styled';
 
-const MainGalleryCard = () => {
+const MainGalleryCard: React.FC<IMainGalleryCardProps> = ({ cardData }) => {
   return (
     <StyledMainGalleryCard>
-      <CardImg />
+      <CardImg src={cardData.src} />
       <CardInfo>
         <InfoUser>
           <UserArtArtistBox>
-            <InfoUserArt>Charles V, bust length...</InfoUserArt>
-            <InfoUserArtist>Giovanni Britto</InfoUserArtist>
+            <InfoUserArt>{cardData.artName}</InfoUserArt>
+            <InfoUserArtist>{cardData.artist}</InfoUserArtist>
           </UserArtArtistBox>
-          Public
+          {cardData.isPublic ? 'Public' : 'Private'}
         </InfoUser>
         <CardInfoIcon>
           <FavoritesImgBox>
