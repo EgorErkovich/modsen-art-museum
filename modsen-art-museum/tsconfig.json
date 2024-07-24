@@ -8,9 +8,13 @@
         "types": ["vite/client", "vitest/globals"],
         "esModuleInterop": true,
         "noImplicitAny": true,
-        "baseUrl": "./",
+        "baseUrl": "./src/",
         "paths": {
-        "vitest": ["node_modules/vite-plugin-environment/dist/index.d.ts"]
+        "vitest": ["node_modules/vite-plugin-environment/dist/index.d.ts"],
+        "@components/*": ["components/*"],
+        "@pages/*": ["pages/*"],
+        "@utils/*": ["utils/*"],
+        "@app/*": ["app/*"]
     },
         /* Bundler mode */
         "moduleResolution": "bundler",

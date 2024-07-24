@@ -27,7 +27,7 @@ const Button = styled.button`
 const PageNumbers = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 10px; //Добавлено для расстояния между стрелками и номерами страниц
+  margin: 0 10px;
 `;
 
 const PageNumber = styled.button<{ $active?: boolean }>`
@@ -57,8 +57,6 @@ const Arrow = styled.div<{ $direction: 'left' | 'right'; $isVisible: boolean }>`
   opacity: 1;
   transform: ${(props) => (props.$direction === 'right' ? 'rotate(45deg)' : 'rotate(-135deg)')};
   display: ${(props) => (props.$isVisible ? 'block' : 'none')};
-
-  // Добавьте немного отступа для улучшения внешнего вида
   margin: 0 5px;
 `;
 

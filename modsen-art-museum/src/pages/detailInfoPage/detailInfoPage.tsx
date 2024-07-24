@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { DetailedImg, DetailedInfo, IDetailedInfoProps, IRootState } from '../../index';
+import {
+  DetailedImg,
+  DetailedInfo,
+  ErrorBoundary,
+  IDetailedInfoProps,
+  IRootState,
+} from '../../index';
 import { StyledDetailInfoPage, Loader, LoaderBox, LoadingText, Spinner } from './styled';
 import { setFavoriteIds, removeFavoriteId, addFavoriteId } from '../../store/store';
 
@@ -105,13 +111,17 @@ const DetailInfoPage: React.FC = () => {
 
   return (
     <StyledDetailInfoPage>
-      <DetailedImg
-        src={artData ? artData.src : defaultImageSrc}
-        id={artData ? artData.id : 0}
-        isFavorite={artData ? artData.isFavorite : false}
-        onToggleFavorite={handleToggleFavorite}
-      />
-      <DetailedInfo artDetails={artData as IDetailedInfoProps} />
+      <ErrorBoundary>
+        <DetailedImg
+          src={artData ? artData.src : defaultImageSrc}
+          id={artData ? artData.id : 0}
+          isFavorite={artData ? artData.isFavorite : false}
+          onToggleFavorite={handleToggleFavorite}
+        />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <DetailedInfo artDetails={artData as IDetailedInfoProps} />
+      </ErrorBoundary>
     </StyledDetailInfoPage>
   );
 };

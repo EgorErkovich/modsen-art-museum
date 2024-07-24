@@ -10,6 +10,7 @@ import {
   SortBlock,
   IApiCardData,
   IRootState,
+  ErrorBoundary,
 } from '../../index';
 import { setCards } from '../../store/store';
 
@@ -91,13 +92,23 @@ const HomePage = () => {
   return (
     <>
       <MainPageTitle />
-      <SearchBar />
+      <ErrorBoundary>
+        <SearchBar />
+      </ErrorBoundary>
       <BlockTitle title={titleGallery} subtitle={subtitleGallery} />
-      <SortBlock onSortByAlphabet={handleSortByAlphabet} onSortByDate={handleSortByDate} />
-      <MainGallery isLoading={isLoading} />
-      <Pagination setIsLoading={setIsLoading} />
+      <ErrorBoundary>
+        <SortBlock onSortByAlphabet={handleSortByAlphabet} onSortByDate={handleSortByDate} />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <MainGallery isLoading={isLoading} />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Pagination setIsLoading={setIsLoading} />
+      </ErrorBoundary>
       <BlockTitle title={titleOther} subtitle={subtitleOther} />
-      <OtherWorks />
+      <ErrorBoundary>
+        <OtherWorks />
+      </ErrorBoundary>
     </>
   );
 };
