@@ -3,6 +3,70 @@ import styled from 'styled-components';
 const HeaderOptionsBox = styled.div`
   display: flex;
   gap: 16px;
+  align-items: center;
+`;
+
+const BurgerIcon = styled.div<{ isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  div {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  ${(props) =>
+    props.isOpen &&
+    `
+    div:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 5px);
+    }
+    
+    div:nth-child(2) {
+      opacity: 0;
+    }
+
+    div:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -5px);
+    }
+  `}
+`;
+
+const MobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #333;
+  padding: 16px;
+  border-radius: 8px;
+  z-index: 10;
+
+  a {
+    margin: 8px 0;
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+const DesktopMenu = styled.div`
+  display: none;
+
+  @media (min-width: 769px) {
+    display: flex;
+    gap: 16px;
+  }
 `;
 
 const HeaderHomeFavorites = styled.div`
@@ -26,7 +90,9 @@ const HeaderOptionsText = styled.span`
   }
 `;
 
-const HeaderHome = styled(HeaderHomeFavorites)``;
+const HeaderHome = styled(HeaderHomeFavorites)`
+  width: 86px;
+`;
 
 const HeaderFavorites = styled(HeaderHomeFavorites)``;
 
@@ -37,7 +103,6 @@ const HomeFavoritesImgBox = styled.div`
   width: 24px;
   height: 24px;
   gap: 0px;
-  opacity: 0px;
 `;
 
 const HomeImgBox = styled(HomeFavoritesImgBox)`
@@ -96,4 +161,7 @@ export {
   HomeImgHome,
   HomeImgDoor,
   HeaderOptionsText,
+  MobileMenu,
+  BurgerIcon,
+  DesktopMenu,
 };
