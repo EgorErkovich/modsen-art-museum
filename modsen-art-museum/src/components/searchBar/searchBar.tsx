@@ -104,7 +104,7 @@ const SearchBar: React.FC = () => {
         };
 
         return (
-          <Form>
+          <Form style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Field
               name="searchQuery"
               as={StyledInput}

@@ -20,6 +20,7 @@ export { default as FavoritesPageTitle } from './components/favoritesPageTitle/f
 export { default as DetailedImg } from './components/detailedImg/detailedImg';
 export { default as DetailedInfo } from './components/detailedInfo/detailedInfo';
 export { default as FavoritesWorks } from './components/favoritesWorks/favoritesWorks';
+export { default as SortBlock } from './components/sortBlock/sortBlock';
 export type {
   IMainGalleryCardProps,
   IMainCardData,
