@@ -9,10 +9,11 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './test/setupTests.ts',
-    server: {
-      deps: {
-        inline: true,
-      },
+    alias: {
+      '@components': '/src/components',
+      '@pages': '/src/pages',
+      '@utils': '/src/utils',
+      '@app': '/src/app',
     },
     coverage: {
       provider: 'istanbul',

@@ -37,8 +37,6 @@ const HomePage = () => {
         );
         const data = await response.json();
 
-        console.log('API Response:', data);
-
         const artworkIds = data.data.map((artwork: IApiCardData) => artwork.id).join(',');
 
         if (artworkIds) {
@@ -58,8 +56,6 @@ const HomePage = () => {
             image_id: artwork.image_id,
             is_public_domain: artwork.is_public_domain,
           }));
-
-          console.log('Fetched Artworks:', artworks);
 
           dispatch(setCards(artworks));
         }
@@ -86,7 +82,9 @@ const HomePage = () => {
   const handleSortByDate = () => {
     const newDateOrder = sortByDate === 'asc' ? 'desc' : 'asc';
     setSortByDate(newDateOrder);
-    setSortOrder('asc');
+
+    setSortOrder(newDateOrder === 'asc' ? 'asc' : 'desc');
+    fetchSortedData(newDateOrder, 'date_start');
   };
 
   return (
