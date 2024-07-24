@@ -25,7 +25,7 @@ const HeaderOptions = () => {
 
   return (
     <HeaderOptionsBox>
-      <BurgerIcon isOpen={isMenuOpen} onClick={toggleMenu}>
+      <BurgerIcon $isOpen={isMenuOpen} onClick={toggleMenu}>
         <div />
         <div />
         <div />

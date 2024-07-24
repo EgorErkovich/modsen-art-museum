@@ -1,5 +1,5 @@
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IApiCardData } from '../index';
+import { IApiCardData, IPaginationState } from '../index';
 
 interface IFavoritesState {
   favoriteIds: number[];
@@ -27,13 +27,9 @@ const favoritesSlice = createSlice({
   },
 });
 
-interface IPaginationState {
-  currentPage: number;
-  cards: IApiCardData[];
-}
-
 const initialPaginationState: IPaginationState = {
   currentPage: 1,
+  totalPages: 1,
   cards: [],
 };
 
@@ -44,20 +40,45 @@ const paginationSlice = createSlice({
     setCurrentPage: (state, action: PayloadAction<number>) => {
       return { ...state, currentPage: action.payload };
     },
+    setTotalPages: (state, action: PayloadAction<number>) => {
+      return { ...state, totalPages: action.payload };
+    },
     setCards: (state, action: PayloadAction<IApiCardData[]>) => {
       return { ...state, cards: action.payload };
     },
   },
 });
 
-export const { addFavoriteId, removeFavoriteId, setFavoriteIds } = favoritesSlice.actions;
+interface IInputState {
+  value: string;
+}
 
-export const { setCurrentPage, setCards } = paginationSlice.actions;
+const initialInputState: IInputState = {
+  value: '',
+};
+
+const inputSlice = createSlice({
+  name: 'input',
+  initialState: initialInputState,
+  reducers: {
+    setInputValue: (state, action: PayloadAction<string>) => {
+      return { ...state, value: action.payload };
+    },
+    clearInputValue: (state) => {
+      return { ...state, value: '' };
+    },
+  },
+});
+
+export const { addFavoriteId, removeFavoriteId, setFavoriteIds } = favoritesSlice.actions;
+export const { setCurrentPage, setTotalPages, setCards } = paginationSlice.actions;
+export const { setInputValue, clearInputValue } = inputSlice.actions;
 
 const store = configureStore({
   reducer: {
     pagination: paginationSlice.reducer,
     favorites: favoritesSlice.reducer,
+    input: inputSlice.reducer,
   },
 });
 

@@ -6,7 +6,7 @@ const HeaderOptionsBox = styled.div`
   align-items: center;
 `;
 
-const BurgerIcon = styled.div<{ isOpen: boolean }>`
+const BurgerIcon = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -24,7 +24,7 @@ const BurgerIcon = styled.div<{ isOpen: boolean }>`
   }
 
   ${(props) =>
-    props.isOpen &&
+    props.$isOpen &&
     `
     div:nth-child(1) {
       transform: rotate(45deg) translate(8px, 5px);

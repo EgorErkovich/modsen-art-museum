@@ -30,6 +30,7 @@ export interface IApiCardData {
 
 export interface IPaginationState {
   currentPage: number;
+  totalPages: number;
   cards: IApiCardData[];
 }
 
@@ -37,7 +38,12 @@ export interface IFavoritesState {
   favoriteIds: number[];
 }
 
+export interface IInputSearch {
+  value: string;
+}
+
 export interface IRootState {
   pagination: IPaginationState;
   favorites: IFavoritesState;
+  input: IInputSearch;
 }
