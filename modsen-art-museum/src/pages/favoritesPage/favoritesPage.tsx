@@ -1,4 +1,4 @@
-import { BlockTitle, FavoritesPageTitle, OtherWorks } from '../../index';
+import { BlockTitle, FavoritesPageTitle, FavoritesWorks } from '../../index';
 
 const FavoritesPage = () => {
   const titleSaved = 'Your favorites list';
@@ -8,7 +8,7 @@ const FavoritesPage = () => {
     <>
       <FavoritesPageTitle />
       <BlockTitle title={titleSaved} subtitle={subtitleSaved} />
-      <OtherWorks />
+      <FavoritesWorks />
     </>
   );
 };

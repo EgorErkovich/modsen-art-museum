@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { DetailedImg, DetailedInfo, IDetailedInfoProps, IRootState } from '../../index';
-import StyledDetailInfoPage from './styled';
+import { StyledDetailInfoPage, Loader, LoaderBox, LoadingText, Spinner } from './styled';
 import { setFavoriteIds, removeFavoriteId, addFavoriteId } from '../../store/store';
 
 const DetailInfoPage: React.FC = () => {
@@ -75,10 +75,6 @@ const DetailInfoPage: React.FC = () => {
     fetchArtData();
   }, [favoriteImageIds, id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
@@ -95,6 +91,17 @@ const DetailInfoPage: React.FC = () => {
 
     localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
   };
+
+  if (loading) {
+    return (
+      <LoaderBox>
+        <Loader>
+          <Spinner />
+          <LoadingText>Loading...</LoadingText>
+        </Loader>
+      </LoaderBox>
+    );
+  }
 
   return (
     <StyledDetailInfoPage>

@@ -60,7 +60,7 @@ const Spinner = styled.div`
 
 const LoadingText = styled.span`
   margin-top: 10px;
-  font-family: Inter;
+  font-family: Lexend Deca;
   font-size: 18px;
   font-weight: 500;
   line-height: 26.32px;

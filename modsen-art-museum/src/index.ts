@@ -19,6 +19,7 @@ export { default as SmallCard } from './components/smallCard/smallCard';
 export { default as FavoritesPageTitle } from './components/favoritesPageTitle/favoritesPageTitle';
 export { default as DetailedImg } from './components/detailedImg/detailedImg';
 export { default as DetailedInfo } from './components/detailedInfo/detailedInfo';
+export { default as FavoritesWorks } from './components/favoritesWorks/favoritesWorks';
 export type {
   IMainGalleryCardProps,
   IMainCardData,
