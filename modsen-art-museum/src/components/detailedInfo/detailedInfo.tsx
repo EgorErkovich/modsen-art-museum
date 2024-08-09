@@ -7,9 +7,14 @@ import {
   Overview,
   OverviewData,
   StyledDetailedInfo,
+  DimensionsTitle,
 } from './styled';
 
 const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
+  const dimensionsArray = artDetails.dimensions.split(' ');
+  const sheetWord = dimensionsArray.shift();
+  const dimensions = dimensionsArray.join(' ');
+
   return (
     <StyledDetailedInfo>
       <ArtInfo>
@@ -24,7 +29,7 @@ const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails
           Artist nationality: <span>{artDetails.nationality}</span>
         </OverviewData>
         <OverviewData>
-          Dimensions: <span>{artDetails.dimensions}</span>
+          Dimensions: <DimensionsTitle>{sheetWord}</DimensionsTitle> <span>{dimensions}</span>
         </OverviewData>
         <OverviewData>
           Credit Line: <span>{artDetails.creditLine}</span>

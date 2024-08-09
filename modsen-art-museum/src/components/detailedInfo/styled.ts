@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const commonTextStyle = `
+  font-family: Lexend Deca;
+  font-weight: 400;
+  text-align: left;
+`;
+
+const colors = {
+  primary: '#e0a449',
+  secondary: '#393939',
+};
+
 const StyledDetailedInfo = styled.div`
   max-width: 660px;
   display: flex;
@@ -25,12 +36,10 @@ const ArtInfo = styled.div`
 `;
 
 const ArtInfoOverviewTitle = styled.h3`
-  font-family: Lexend Deca;
+  ${commonTextStyle}
   font-size: clamp(28px, 2.23vw, 32px);
-  font-weight: 400;
   line-height: 40px;
-  text-align: left;
-  color: #393939;
+  color: ${colors.secondary};
   margin-bottom: clamp(10px, 1.12vw, 16px);
 
   @media (max-width: 768px) {
@@ -40,12 +49,10 @@ const ArtInfoOverviewTitle = styled.h3`
 `;
 
 const ArtInfoArtist = styled.p`
-  font-family: Lexend Deca;
+  ${commonTextStyle}
   font-size: clamp(20px, 1.67vw, 24px);
-  font-weight: 400;
   line-height: 30px;
-  text-align: left;
-  color: #e0a449;
+  color: ${colors.primary};
 
   @media (max-width: 768px) {
     font-size: clamp(18px, 3.125vw, 24px);
@@ -53,17 +60,15 @@ const ArtInfoArtist = styled.p`
 `;
 
 const ArtInfoYears = styled.p`
-  font-family: Lexend Deca;
+  ${commonTextStyle}
   font-size: clamp(14px, 1.12vw, 16px);
   font-weight: 700;
   line-height: 20px;
-  text-align: left;
+  color: ${colors.secondary};
 
   @media (max-width: 768px) {
     font-size: clamp(12px, 2.09vw, 16px);
   }
-
-  color: #393939;
 `;
 
 const Overview = styled.div`
@@ -76,16 +81,22 @@ const Overview = styled.div`
   }
 `;
 
+const DimensionsTitle = styled.span`
+  color: ${colors.primary};
+`;
+
 const OverviewData = styled.p`
-  font-family: Lexend Deca;
+  ${commonTextStyle}
   font-size: clamp(10px, 1.12vw, 16px);
-  font-weight: 400;
   line-height: 20px;
-  text-align: left;
-  color: #e0a449;
+  color: ${colors.primary};
 
   span {
-    color: #393939;
+    color: ${colors.secondary};
+  }
+
+  ${DimensionsTitle} {
+    color: ${colors.primary};
   }
 
   @media (max-width: 768px) {
@@ -101,4 +112,5 @@ export {
   ArtInfoYears,
   Overview,
   OverviewData,
+  DimensionsTitle,
 };

@@ -55,6 +55,22 @@ const DetailInfoPage: React.FC = () => {
             nationality,
           } = data.data;
 
+          let formattedDimensions = 'Unknown dimensions';
+
+          const sheetIndex = dimensions.indexOf('Sheet:');
+          let slicedDimensions = '';
+
+          if (sheetIndex === -1) {
+            slicedDimensions = `Sheet: ${dimensions}`;
+          } else {
+            slicedDimensions = dimensions.slice(sheetIndex).trim();
+          }
+
+          const cmPart = slicedDimensions.split('(')[0].replace('Sheet:', '').trim();
+          const inPart = slicedDimensions.split('(')[1].replace(')', '').trim();
+
+          formattedDimensions = `Sheet: ${inPart} (${cmPart})`;
+
           const convertedData: IDetailedInfoProps = {
             id: Number(id),
             src: `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`,
@@ -62,7 +78,7 @@ const DetailInfoPage: React.FC = () => {
             artist: artistDisplay,
             years,
             nationality: nationality || 'Unknown',
-            dimensions,
+            dimensions: formattedDimensions,
             creditLine,
             repository: 'Art Institute of Chicago',
             isPublic,
