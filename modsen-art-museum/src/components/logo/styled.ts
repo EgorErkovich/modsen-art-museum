@@ -58,6 +58,8 @@ const LogoFoundation = styled.svg`
 `;
 
 const LogoTextBox = styled.div`
+  position: relative;
+  bottom: 1px;
   display: flex;
   gap: 7px;
   align-items: flex-end;

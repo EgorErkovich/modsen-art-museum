@@ -77,6 +77,7 @@ const HeaderHomeFavorites = styled.div`
 `;
 
 const HeaderOptionsText = styled.span`
+  position: relative;
   top: 2px;
   font-family: Inter;
   font-size: 18px;
