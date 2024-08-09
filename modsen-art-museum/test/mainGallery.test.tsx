@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
-import MainGallery from '../src/components/mainGallery/mainGallery';
+import MainGallery from '@components/mainGallery/mainGallery';
 
 const mockStore = configureStore([]);
 

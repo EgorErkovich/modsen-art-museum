@@ -1,4 +1,4 @@
-import StyledMainPageTitle from './styled';
+import StyledMainPageTitle from '@components/mainPageTitle/styled';
 
 const MainPageTitle = () => {
   return (

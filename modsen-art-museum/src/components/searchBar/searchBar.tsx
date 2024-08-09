@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import StyledInput from './styled';
-import { setCards, setTotalPages, setCurrentPage, setInputValue } from '../../store/store';
-import { IRootState } from '../../index';
+import { setCards, setTotalPages, setCurrentPage, setInputValue } from '@store';
+import { IRootState } from '@index';
+import StyledInput from '@components/searchBar/styled';
 
 export interface IApiCardData {
   id: number;

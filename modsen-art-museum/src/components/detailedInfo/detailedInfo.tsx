@@ -1,4 +1,4 @@
-import { IDetailedInfoProps } from '../../index';
+import { IDetailedInfoProps } from '@index';
 import {
   ArtInfo,
   ArtInfoArtist,
@@ -8,7 +8,7 @@ import {
   OverviewData,
   StyledDetailedInfo,
   DimensionsTitle,
-} from './styled';
+} from '@components/detailedInfo/styled';
 
 const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
   const dimensionsArray = artDetails.dimensions.split(' ');

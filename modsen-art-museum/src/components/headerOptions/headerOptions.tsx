@@ -13,7 +13,7 @@ import {
   MobileMenu,
   BurgerIcon,
   DesktopMenu,
-} from './styled';
+} from '@components/headerOptions/styled';
 
 const HeaderOptions = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

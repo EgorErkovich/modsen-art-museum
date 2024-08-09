@@ -11,9 +11,13 @@
         "baseUrl": "./src/",
         "paths": {
         "vitest": ["node_modules/vite-plugin-environment/dist/index.d.ts"],
+        "@src/*": ["*"],
         "@components/*": ["components/*"],
+        "@assets/*": ["assets/*"],
         "@pages/*": ["pages/*"],
         "@utils/*": ["utils/*"],
+        "@store": ["store/store"],
+        "@index": ["index"],
         "@app/*": ["app/*"]
     },
         /* Bundler mode */

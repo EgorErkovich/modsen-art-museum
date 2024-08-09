@@ -1,4 +1,9 @@
-import { CardInfoIcon, FavoritesImg, FavoritesImgBox, StyledDetailedImg } from './styled';
+import {
+  CardInfoIcon,
+  FavoritesImg,
+  FavoritesImgBox,
+  StyledDetailedImg,
+} from '@components/detailedImg/styled';
 
 const DetailedImg = ({
   id,

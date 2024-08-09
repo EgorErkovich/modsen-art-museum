@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IMainGalleryCardProps } from '../../index';
+import { IMainGalleryCardProps } from 'index';
 import {
   StyledMainGalleryCard,
   CardImg,
@@ -11,7 +11,7 @@ import {
   FavoritesImgBox,
   FavoritesImg,
   CardInfoIcon,
-} from './styled';
+} from '@components/mainGalleryCard/styled';
 
 const MainGalleryCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite }) => {
   const handleFavoriteToggle = (event: React.MouseEvent) => {

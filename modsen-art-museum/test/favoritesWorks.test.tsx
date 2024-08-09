@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import FavoritesWorks from '../src/components/favoritesWorks/favoritesWorks';
+import FavoritesWorks from '@components/favoritesWorks/favoritesWorks';
 
 const mockStore = configureStore([]);
 

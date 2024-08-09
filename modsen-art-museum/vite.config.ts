@@ -8,7 +8,11 @@ export default defineConfig({
       '@components': '/src/components',
       '@pages': '/src/pages',
       '@utils': '/src/utils',
+      '@assets': '/src/assets',
+      '@store': '/src/store/store',
+      '@index': '/src/index',
       '@app': '/src/app',
+      '@src': '/src',
     },
   },
   optimizeDeps: {

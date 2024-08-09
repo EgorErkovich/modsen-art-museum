@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import DetailInfoPage from '../src/pages/detailInfoPage/detailInfoPage';
+import DetailInfoPage from '@pages/detailInfoPage/detailInfoPage';
 
 const mockStore = configureStore([]);
 

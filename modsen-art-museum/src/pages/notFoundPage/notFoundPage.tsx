@@ -1,4 +1,4 @@
-import { Container, Message, Title } from './styled';
+import { Container, Message, Title } from '@pages/notFoundPage/styled';
 
 const NotFoundPage = () => {
   return (

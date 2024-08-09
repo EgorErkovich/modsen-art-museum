@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IMainGalleryCardProps, trimArtistName, trimArtName } from '../../index';
+import { IMainGalleryCardProps, trimArtistName, trimArtName } from '@index';
 import {
   StyledSmallCard,
   CardImg,
@@ -10,7 +10,7 @@ import {
   InfoUserArt,
   InfoUserArtist,
   UserArtArtistBox,
-} from './styled';
+} from '@components/smallCard/styled';
 
 const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite }) => {
   const handleFavoriteToggle = (event: React.MouseEvent) => {

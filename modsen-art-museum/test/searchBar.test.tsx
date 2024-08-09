@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { act } from 'react-dom/test-utils';
 import { vi } from 'vitest';
-import SearchBar from '../src/components/searchBar/searchBar';
-import { IRootState } from '../src/index';
+import SearchBar from '@components/searchBar/searchBar';
+import { IRootState } from '@index';
 
 const mockStore = configureStore([]);
 

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { DetailInfoPage, FavoritesPage, HomePage, Layout, NotFoundPage } from '../index';
+import { DetailInfoPage, FavoritesPage, HomePage, Layout, NotFoundPage } from '@index';
 
 const App = () => {
   return (

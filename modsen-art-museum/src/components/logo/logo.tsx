@@ -8,7 +8,7 @@ import {
   LogoMuseumText,
   LogoArtText,
   LogoTextBox,
-} from './styled';
+} from '@components/logo/styled';
 
 const Logo = ({ museumTextColor }: { museumTextColor?: string }) => {
   return (

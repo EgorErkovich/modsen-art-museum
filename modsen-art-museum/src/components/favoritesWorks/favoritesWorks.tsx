@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IApiCardData, IMainCardData, IRootState, SmallCard } from '../../index';
-import { addFavoriteId, removeFavoriteId } from '../../store/store';
+import { IApiCardData, IMainCardData, IRootState, SmallCard } from '@index';
+import { addFavoriteId, removeFavoriteId } from '@store';
 import {
   LoaderBox,
   Loader,
@@ -9,7 +9,7 @@ import {
   LoadingText,
   StyledFavoritesWorks,
   IsEmptyText,
-} from './styled';
+} from '@components/favoritesWorks/styled';
 
 const FavoritesWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);

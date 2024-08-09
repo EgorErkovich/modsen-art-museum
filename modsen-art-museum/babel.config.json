@@ -18,7 +18,11 @@
                     "@components": "./src/components",
                     "@pages": "./src/pages",
                     "@utils": "./src/utils",
-                    "@app": "./src/app"
+                    "@app": "./src/app",
+                    "@assets": "/src/assets",
+                    "@index": "/src/index",
+                    "@store": "/src/store/store",
+                    "@src": "./src"
                 }
             }
         ]

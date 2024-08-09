@@ -1,5 +1,5 @@
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IApiCardData, IPaginationState } from '../index';
+import { IApiCardData, IPaginationState } from '@index';
 
 interface IFavoritesState {
   favoriteIds: number[];

@@ -11,8 +11,8 @@ import {
   IApiCardData,
   IRootState,
   ErrorBoundary,
-} from '../../index';
-import { setCards } from '../../store/store';
+} from '@index';
+import { setCards } from '@store';
 
 const HomePage = () => {
   const dispatch = useDispatch();

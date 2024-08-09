@@ -1,4 +1,4 @@
-import { BlockTitle, ErrorBoundary, FavoritesPageTitle, FavoritesWorks } from '../../index';
+import { BlockTitle, ErrorBoundary, FavoritesPageTitle, FavoritesWorks } from '@index';
 
 const FavoritesPage = () => {
   const titleSaved = 'Your favorites list';

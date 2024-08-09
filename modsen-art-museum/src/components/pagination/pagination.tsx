@@ -1,8 +1,14 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PaginationContainer, Button, Arrow, PageNumbers, PageNumber } from './styled';
-import { setCurrentPage, setCards, setTotalPages } from '../../store/store';
-import { IRootState } from '../../index';
+import { setCurrentPage, setCards, setTotalPages } from '@store';
+import { IRootState } from '@index';
+import {
+  PaginationContainer,
+  Button,
+  Arrow,
+  PageNumbers,
+  PageNumber,
+} from '@components/pagination/styled';
 
 interface PaginationProps {
   setIsLoading: (loading: boolean) => void;

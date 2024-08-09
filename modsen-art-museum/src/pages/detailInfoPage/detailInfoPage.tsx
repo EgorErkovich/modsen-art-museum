@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { DetailedImg, DetailedInfo, ErrorBoundary, IDetailedInfoProps, IRootState } from '@index';
+import { setFavoriteIds, removeFavoriteId, addFavoriteId } from '@store';
 import {
-  DetailedImg,
-  DetailedInfo,
-  ErrorBoundary,
-  IDetailedInfoProps,
-  IRootState,
-} from '../../index';
-import { StyledDetailInfoPage, Loader, LoaderBox, LoadingText, Spinner } from './styled';
-import { setFavoriteIds, removeFavoriteId, addFavoriteId } from '../../store/store';
+  StyledDetailInfoPage,
+  Loader,
+  LoaderBox,
+  LoadingText,
+  Spinner,
+} from '@pages/detailInfoPage/styled';
 
 const DetailInfoPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -58,15 +58,23 @@ const DetailInfoPage: React.FC = () => {
           let formattedDimensions = 'Unknown dimensions';
 
           const sheetIndex = dimensions.indexOf('Sheet:');
+          const framedIndex = dimensions.indexOf('; Framed:');
           let slicedDimensions = '';
 
           if (sheetIndex === -1) {
-            slicedDimensions = `Sheet: ${dimensions}`;
+            slicedDimensions = `Sheet: ${dimensions
+              .split('\n')[0]
+              .slice(dimensions.split('\n')[0].indexOf(':') + 2, framedIndex)
+              .trim()}`;
           } else {
-            slicedDimensions = dimensions.slice(sheetIndex).trim();
+            slicedDimensions = dimensions.split('\n')[0].slice(sheetIndex, framedIndex).trim();
           }
 
-          const cmPart = slicedDimensions.split('(')[0].replace('Sheet:', '').trim();
+          const cmPart = slicedDimensions
+            .split('(')[0]
+            .replace('Sheet:', '')
+            .replace('a)', '')
+            .trim();
           const inPart = slicedDimensions.split('(')[1].replace(')', '').trim();
 
           formattedDimensions = `Sheet: ${inPart} (${cmPart})`;

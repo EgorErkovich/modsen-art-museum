@@ -14,6 +14,10 @@ export default defineConfig({
       '@pages': '/src/pages',
       '@utils': '/src/utils',
       '@app': '/src/app',
+      '@assets': '/src/assets',
+      '@store': '/src/store/store',
+      '@index': '/src/index',
+      '@src': '/src',
     },
     coverage: {
       provider: 'istanbul',

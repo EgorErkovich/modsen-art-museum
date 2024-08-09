@@ -1,8 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IApiCardData, IMainCardData, IRootState, SmallCard } from '../../index';
-import { addFavoriteId, removeFavoriteId } from '../../store/store';
-import { LoaderBox, Loader, Spinner, LoadingText, StyledOtherWorks } from './styled';
+import { IApiCardData, IMainCardData, IRootState, SmallCard } from '@index';
+import { addFavoriteId, removeFavoriteId } from '@store';
+import {
+  LoaderBox,
+  Loader,
+  Spinner,
+  LoadingText,
+  StyledOtherWorks,
+} from '@components/otherWorks/styled';
 
 const OtherWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);

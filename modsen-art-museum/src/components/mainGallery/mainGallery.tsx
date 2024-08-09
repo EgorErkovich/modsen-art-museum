@@ -1,13 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '../../store/store';
-import {
-  IApiCardData,
-  IRootState,
-  MainGalleryCard,
-  trimArtistName,
-  trimArtName,
-} from '../../index';
+import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
+import { IApiCardData, IRootState, MainGalleryCard, trimArtistName, trimArtName } from '@index';
 import {
   Loader,
   LoaderBox,
@@ -15,7 +9,7 @@ import {
   Spinner,
   StyledMainGallery,
   StyledMainGalleryBox,
-} from './styled';
+} from '@components/mainGallery/styled';
 
 const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
   const dispatch = useDispatch();

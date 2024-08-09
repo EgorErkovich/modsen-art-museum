@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import DetailedImg from '../src/components/detailedImg/detailedImg';
+import DetailedImg from '@components/detailedImg/detailedImg';
 
 const mockStore = configureStore([]);
 
