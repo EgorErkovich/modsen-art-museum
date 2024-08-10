@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd modsen-art-museum
+
+yarn run prettier && yarn run lint && yarn run coverage
