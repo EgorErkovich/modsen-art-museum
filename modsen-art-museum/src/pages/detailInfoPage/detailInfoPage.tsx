@@ -1,11 +1,5 @@
-import { DetailedImg, DetailedInfo, ErrorBoundary, IDetailedInfoProps, IRootState } from '@index';
-import {
-  Loader,
-  LoaderBox,
-  LoadingText,
-  Spinner,
-  StyledDetailInfoPage,
-} from '@pages/detailInfoPage/styled';
+import { DetailedImg, DetailedInfo, IDetailedInfoProps, IRootState, Loader } from '@index';
+import StyledDetailInfoPage from '@pages/detailInfoPage/styled';
 import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -123,29 +117,19 @@ const DetailInfoPage: React.FC = () => {
   };
 
   if (loading) {
-    return (
-      <LoaderBox>
-        <Loader>
-          <Spinner />
-          <LoadingText>Loading...</LoadingText>
-        </Loader>
-      </LoaderBox>
-    );
+    return <Loader />;
   }
 
   return (
     <StyledDetailInfoPage>
-      <ErrorBoundary>
-        <DetailedImg
-          src={artData ? artData.src : defaultImageSrc}
-          id={artData ? artData.id : 0}
-          isFavorite={artData ? artData.isFavorite : false}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <DetailedInfo artDetails={artData as IDetailedInfoProps} />
-      </ErrorBoundary>
+      <DetailedImg
+        src={artData ? artData.src : defaultImageSrc}
+        id={artData ? artData.id : 0}
+        isFavorite={artData ? artData.isFavorite : false}
+        onToggleFavorite={handleToggleFavorite}
+      />
+
+      <DetailedInfo artDetails={artData as IDetailedInfoProps} />
     </StyledDetailInfoPage>
   );
 };

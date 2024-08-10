@@ -1,12 +1,12 @@
+import { StyledMainGallery, StyledMainGalleryBox } from '@components/mainGallery/styled';
 import {
+  IApiCardData,
+  IRootState,
   Loader,
-  LoaderBox,
-  LoadingText,
-  Spinner,
-  StyledMainGallery,
-  StyledMainGalleryBox,
-} from '@components/mainGallery/styled';
-import { IApiCardData, IRootState, MainGalleryCard, trimArtistName, trimArtName } from '@index';
+  MainGalleryCard,
+  trimArtistName,
+  trimArtName,
+} from '@index';
 import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,12 +48,7 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
     <StyledMainGalleryBox>
       <StyledMainGallery>
         {isLoading ? (
-          <LoaderBox>
-            <Loader>
-              <Spinner />
-              <LoadingText>Loading...</LoadingText>
-            </Loader>
-          </LoaderBox>
+          <Loader />
         ) : (
           cards.map((cardData: IApiCardData) => {
             const imageSrc = cardData.image_id

@@ -1,12 +1,5 @@
-import {
-  IsEmptyText,
-  Loader,
-  LoaderBox,
-  LoadingText,
-  Spinner,
-  StyledFavoritesWorks,
-} from '@components/favoritesWorks/styled';
-import { IApiCardData, IMainCardData, IRootState, SmallCard } from '@index';
+import { IsEmptyText, StyledFavoritesWorks } from '@components/favoritesWorks/styled';
+import { IApiCardData, IMainCardData, IRootState, Loader, SmallCard } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,14 +66,7 @@ const FavoritesWorks = () => {
   };
 
   if (isLoading) {
-    return (
-      <LoaderBox>
-        <Loader>
-          <Spinner />
-          <LoadingText>Loading...</LoadingText>
-        </Loader>
-      </LoaderBox>
-    );
+    return <Loader />;
   }
 
   return (

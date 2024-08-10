@@ -1,6 +1,6 @@
 import '@src/index.css';
 
-import { App } from '@index';
+import { App, ErrorBoundary } from '@index';
 import store from '@store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -11,7 +11,9 @@ if (root) {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </Provider>
     </React.StrictMode>
   );

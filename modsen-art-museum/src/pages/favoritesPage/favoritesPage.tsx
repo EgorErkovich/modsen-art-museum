@@ -1,4 +1,4 @@
-import { BlockTitle, ErrorBoundary, FavoritesPageTitle, FavoritesWorks } from '@index';
+import { BlockTitle, FavoritesPageTitle, FavoritesWorks } from '@index';
 
 const FavoritesPage = () => {
   const titleSaved = 'Your favorites list';
@@ -7,9 +7,7 @@ const FavoritesPage = () => {
   return (
     <>
       <FavoritesPageTitle />
-      <ErrorBoundary>
-        <BlockTitle title={titleSaved} subtitle={subtitleSaved} />
-      </ErrorBoundary>
+      <BlockTitle title={titleSaved} subtitle={subtitleSaved} />
       <FavoritesWorks />
     </>
   );

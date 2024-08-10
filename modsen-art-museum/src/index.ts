@@ -8,6 +8,7 @@ export { default as FavoritesWorks } from '@components/favoritesWorks/favoritesW
 export { default as Footer } from '@components/footer/footer';
 export { default as Header } from '@components/header/header';
 export { default as HeaderOptions } from '@components/headerOptions/headerOptions';
+export { default as Loader } from '@components/loader/loader';
 export { default as Logo } from '@components/logo/logo';
 export { default as MainGallery } from '@components/mainGallery/mainGallery';
 export { default as MainGalleryCard } from '@components/mainGalleryCard/mainGalleryCard';

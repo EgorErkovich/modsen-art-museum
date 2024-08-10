@@ -1,6 +1,5 @@
 import {
   BlockTitle,
-  ErrorBoundary,
   IApiCardData,
   IRootState,
   MainGallery,
@@ -90,23 +89,13 @@ const HomePage = () => {
   return (
     <>
       <MainPageTitle />
-      <ErrorBoundary>
-        <SearchBar />
-      </ErrorBoundary>
+      <SearchBar />
       <BlockTitle title={titleGallery} subtitle={subtitleGallery} />
-      <ErrorBoundary>
-        <SortBlock onSortByAlphabet={handleSortByAlphabet} onSortByDate={handleSortByDate} />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <MainGallery isLoading={isLoading} />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Pagination setIsLoading={setIsLoading} />
-      </ErrorBoundary>
+      <SortBlock onSortByAlphabet={handleSortByAlphabet} onSortByDate={handleSortByDate} />
+      <MainGallery isLoading={isLoading} />
+      <Pagination setIsLoading={setIsLoading} />
       <BlockTitle title={titleOther} subtitle={subtitleOther} />
-      <ErrorBoundary>
-        <OtherWorks />
-      </ErrorBoundary>
+      <OtherWorks />
     </>
   );
 };

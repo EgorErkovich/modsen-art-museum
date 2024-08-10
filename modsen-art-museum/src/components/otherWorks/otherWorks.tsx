@@ -1,11 +1,5 @@
-import {
-  Loader,
-  LoaderBox,
-  LoadingText,
-  Spinner,
-  StyledOtherWorks,
-} from '@components/otherWorks/styled';
-import { IApiCardData, IMainCardData, IRootState, SmallCard } from '@index';
+import StyledOtherWorks from '@components/otherWorks/styled';
+import { IApiCardData, IMainCardData, IRootState, Loader, SmallCard } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -60,14 +54,7 @@ const OtherWorks = () => {
   };
 
   if (isLoading) {
-    return (
-      <LoaderBox>
-        <Loader>
-          <Spinner />
-          <LoadingText>Loading...</LoadingText>
-        </Loader>
-      </LoaderBox>
-    );
+    return <Loader />;
   }
 
   return (
