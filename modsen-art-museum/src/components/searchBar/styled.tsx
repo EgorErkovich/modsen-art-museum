@@ -13,6 +13,7 @@ const StyledInput = styled.input`
   background-image: url('/src/assets/search.png');
   background-repeat: no-repeat;
   background-position: right 16px center;
+  color: #f17900;
 
   font-family: Inter;
   font-weight: 400;

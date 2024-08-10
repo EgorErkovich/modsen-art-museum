@@ -105,18 +105,29 @@ const SearchBar: React.FC = () => {
 
         return (
           <Form style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Field
-              name="searchQuery"
-              as={StyledInput}
-              type="text"
-              placeholder="Search art, artist, work..."
-              onChange={handleInputChange}
-              value={inputValue}
-            />
-            <ErrorMessage
-              name="searchQuery"
-              render={(msg) => <div style={{ color: 'red' }}>{msg}</div>}
-            />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: 'auto',
+              }}
+            >
+              <Field
+                name="searchQuery"
+                as={StyledInput}
+                type="text"
+                placeholder="Search art, artist, work..."
+                onChange={handleInputChange}
+                value={inputValue}
+              />
+              <ErrorMessage
+                name="searchQuery"
+                render={(msg) => (
+                  <div style={{ color: 'red', marginTop: '8px', marginLeft: '5px' }}>{msg}</div>
+                )}
+              />
+            </div>
           </Form>
         );
       }}
