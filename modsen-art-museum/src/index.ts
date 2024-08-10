@@ -28,6 +28,7 @@ export type {
   IDetailedInfoProps,
   IMainCardData,
   IMainGalleryCardProps,
+  IMenuItem,
   IPaginationState,
   IRootState,
 } from '@utils/interfaces';

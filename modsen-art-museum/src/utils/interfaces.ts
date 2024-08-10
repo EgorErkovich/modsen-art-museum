@@ -47,3 +47,11 @@ export interface IRootState {
   favorites: IFavoritesState;
   input: IInputSearch;
 }
+
+export interface IMenuItem {
+  to: string;
+  text: string;
+  renderIcon: JSX.Element;
+  isVisible: boolean;
+  isMobile: boolean;
+}

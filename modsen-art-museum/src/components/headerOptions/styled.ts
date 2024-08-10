@@ -23,20 +23,12 @@ const BurgerIcon = styled.div<{ $isOpen: boolean }>`
     display: none;
   }
 
-  ${(props) =>
-    props.$isOpen &&
+  ${({ $isOpen }) =>
+    $isOpen &&
     `
-    div:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 5px);
-    }
-    
-    div:nth-child(2) {
-      opacity: 0;
-    }
-
-    div:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -5px);
-    }
+    div:nth-child(1) { transform: rotate(45deg) translate(8px, 5px); }
+    div:nth-child(2) { opacity: 0; }
+    div:nth-child(3) { transform: rotate(-45deg) translate(8px, -5px); }
   `}
 `;
 
@@ -91,11 +83,7 @@ const HeaderOptionsText = styled.span`
   }
 `;
 
-const HeaderHome = styled(HeaderHomeFavorites)`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
+const HeaderHome = styled(HeaderHomeFavorites)``;
 
 const HeaderFavorites = styled(HeaderHomeFavorites)``;
 
@@ -105,7 +93,6 @@ const HomeFavoritesImgBox = styled.div`
   align-items: flex-end;
   width: 24px;
   height: 24px;
-  gap: 0px;
 `;
 
 const HomeImgBox = styled(HomeFavoritesImgBox)`

@@ -12,26 +12,17 @@ import {
   HomeImgHome,
   MobileMenu,
 } from '@components/headerOptions/styled';
+import { IMenuItem } from '@index';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-interface MenuItem {
-  to: string;
-  text: string;
-  renderIcon: JSX.Element;
-  isVisible: boolean;
-  isMobile: boolean;
-}
 
 const HeaderOptions = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const menuItems: MenuItem[] = [
+  const menuItems: IMenuItem[] = [
     {
       to: '/home',
       text: 'Home',
@@ -63,7 +54,7 @@ const HeaderOptions = () => {
     },
   ];
 
-  const renderMenuItem = ({ to, text, renderIcon, isMobile }: MenuItem) => (
+  const renderMenuItem = ({ to, text, renderIcon, isMobile }: IMenuItem) => (
     <Link key={to} to={to} style={{ textDecoration: 'none' }}>
       <div onClick={isMobile ? toggleMenu : undefined}>
         {isMobile ? (
