@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import { IMainGalleryCardProps } from 'index';
 import {
-  StyledMainGalleryCard,
   CardImg,
   CardInfo,
-  UserArtArtistBox,
+  CardInfoIcon,
+  FavoritesImg,
+  FavoritesImgBox,
   InfoUser,
   InfoUserArt,
   InfoUserArtist,
-  FavoritesImgBox,
-  FavoritesImg,
-  CardInfoIcon,
+  StyledMainGalleryCard,
+  UserArtArtistBox,
 } from '@components/mainGalleryCard/styled';
+import { IMainGalleryCardProps } from 'index';
+import { Link } from 'react-router-dom';
 
 const MainGalleryCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite }) => {
   const handleFavoriteToggle = (event: React.MouseEvent) => {

@@ -25,4 +25,4 @@ const BlockTitleSubtitle = styled.h3`
   color: #e0a449;
 `;
 
-export { StyledBlockTitle, BlockTitleTitle, BlockTitleSubtitle };
+export { BlockTitleSubtitle, BlockTitleTitle, StyledBlockTitle };

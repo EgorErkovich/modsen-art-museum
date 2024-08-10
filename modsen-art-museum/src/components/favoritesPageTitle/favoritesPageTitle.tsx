@@ -1,7 +1,7 @@
 import {
-  StyledFavoritesPageTitle,
-  FavoritesImgBox,
   FavoritesImg,
+  FavoritesImgBox,
+  StyledFavoritesPageTitle,
 } from '@components/favoritesPageTitle/styled';
 
 const FavoritesPageTitle = () => {

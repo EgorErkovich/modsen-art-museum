@@ -105,12 +105,12 @@ const OverviewData = styled.p`
 `;
 
 export {
-  StyledDetailedInfo,
   ArtInfo,
-  ArtInfoOverviewTitle,
   ArtInfoArtist,
+  ArtInfoOverviewTitle,
   ArtInfoYears,
+  DimensionsTitle,
   Overview,
   OverviewData,
-  DimensionsTitle,
+  StyledDetailedInfo,
 };

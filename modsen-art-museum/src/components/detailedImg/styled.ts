@@ -67,4 +67,4 @@ const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
   }
 `;
 
-export { StyledDetailedImg, FavoritesImgBox, FavoritesImg, CardInfoIcon };
+export { CardInfoIcon, FavoritesImg, FavoritesImgBox, StyledDetailedImg };

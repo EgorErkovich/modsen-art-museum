@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import {
-  HeaderOptionsBox,
-  HeaderHome,
-  HeaderFavorites,
-  FavoritesImgBox,
-  HomeImgBox,
-  FavoritesImg,
-  HomeImgDoor,
-  HomeImgHome,
-  HeaderOptionsText,
-  MobileMenu,
   BurgerIcon,
   DesktopMenu,
+  FavoritesImg,
+  FavoritesImgBox,
+  HeaderFavorites,
+  HeaderHome,
+  HeaderOptionsBox,
+  HeaderOptionsText,
+  HomeImgBox,
+  HomeImgDoor,
+  HomeImgHome,
+  MobileMenu,
 } from '@components/headerOptions/styled';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const HeaderOptions = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

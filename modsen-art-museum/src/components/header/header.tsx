@@ -1,6 +1,6 @@
-import { Logo, HeaderOptions } from '@index';
-import HeaderFooterContentBox from '@components/shared/styled';
 import StyledHeader from '@components/header/styled';
+import HeaderFooterContentBox from '@components/shared/styled';
+import { HeaderOptions, Logo } from '@index';
 
 const Header = () => {
   return (

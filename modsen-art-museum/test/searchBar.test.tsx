@@ -1,10 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { act } from 'react-dom/test-utils';
-import { vi } from 'vitest';
 import SearchBar from '@components/searchBar/searchBar';
 import { IRootState } from '@index';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { vi } from 'vitest';
 
 const mockStore = configureStore([]);
 

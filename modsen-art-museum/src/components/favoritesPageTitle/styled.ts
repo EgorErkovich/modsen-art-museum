@@ -48,4 +48,4 @@ const FavoritesImg = styled.svg`
   }
 `;
 
-export { StyledFavoritesPageTitle, FavoritesImgBox, FavoritesImg };
+export { FavoritesImg, FavoritesImgBox, StyledFavoritesPageTitle };

@@ -1,14 +1,14 @@
-import { IDetailedInfoProps } from '@index';
 import {
   ArtInfo,
   ArtInfoArtist,
   ArtInfoOverviewTitle,
   ArtInfoYears,
+  DimensionsTitle,
   Overview,
   OverviewData,
   StyledDetailedInfo,
-  DimensionsTitle,
 } from '@components/detailedInfo/styled';
+import { IDetailedInfoProps } from '@index';
 
 const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
   const dimensionsArray = artDetails.dimensions.split(' ');

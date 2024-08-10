@@ -88,13 +88,13 @@ const LogoArtText = styled.svg`
 `;
 
 export {
-  LogoBox,
-  LogoImgBox,
-  LogoRoof,
-  LogoColumnBox,
-  LogoColumn,
-  LogoFoundation,
-  LogoMuseumText,
   LogoArtText,
+  LogoBox,
+  LogoColumn,
+  LogoColumnBox,
+  LogoFoundation,
+  LogoImgBox,
+  LogoMuseumText,
+  LogoRoof,
   LogoTextBox,
 };

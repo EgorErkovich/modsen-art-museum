@@ -164,14 +164,14 @@ const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
 `;
 
 export {
-  StyledMainGalleryCard,
   CardImg,
   CardInfo,
+  CardInfoIcon,
+  FavoritesImg,
+  FavoritesImgBox,
   InfoUser,
-  UserArtArtistBox,
   InfoUserArt,
   InfoUserArtist,
-  FavoritesImgBox,
-  FavoritesImg,
-  CardInfoIcon,
+  StyledMainGalleryCard,
+  UserArtArtistBox,
 };

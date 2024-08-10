@@ -59,4 +59,4 @@ const LoadingText = styled.span`
   color: #393939;
 `;
 
-export { StyledDetailInfoPage, Loader, Spinner, LoadingText, LoaderBox };
+export { Loader, LoaderBox, LoadingText, Spinner, StyledDetailInfoPage };

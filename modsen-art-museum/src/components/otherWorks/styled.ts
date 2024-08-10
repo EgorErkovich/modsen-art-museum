@@ -69,4 +69,4 @@ const LoadingText = styled.span`
   color: #393939;
 `;
 
-export { StyledOtherWorks, Loader, Spinner, LoadingText, LoaderBox };
+export { Loader, LoaderBox, LoadingText, Spinner, StyledOtherWorks };

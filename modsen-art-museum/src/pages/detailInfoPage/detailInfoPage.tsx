@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { DetailedImg, DetailedInfo, ErrorBoundary, IDetailedInfoProps, IRootState } from '@index';
-import { setFavoriteIds, removeFavoriteId, addFavoriteId } from '@store';
 import {
-  StyledDetailInfoPage,
   Loader,
   LoaderBox,
   LoadingText,
   Spinner,
+  StyledDetailInfoPage,
 } from '@pages/detailInfoPage/styled';
+import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const DetailInfoPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

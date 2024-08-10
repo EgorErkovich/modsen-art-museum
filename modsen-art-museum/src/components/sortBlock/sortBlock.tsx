@@ -1,5 +1,5 @@
-import React from 'react';
 import { SortBlockContainer, SortButton } from '@components/sortBlock/styled';
+import React from 'react';
 
 interface SortBlockProps {
   onSortByAlphabet: () => void;

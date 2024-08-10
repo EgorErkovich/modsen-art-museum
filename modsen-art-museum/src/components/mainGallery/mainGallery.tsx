@@ -1,7 +1,3 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
-import { IApiCardData, IRootState, MainGalleryCard, trimArtistName, trimArtName } from '@index';
 import {
   Loader,
   LoaderBox,
@@ -10,6 +6,10 @@ import {
   StyledMainGallery,
   StyledMainGalleryBox,
 } from '@components/mainGallery/styled';
+import { IApiCardData, IRootState, MainGalleryCard, trimArtistName, trimArtName } from '@index';
+import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
   const dispatch = useDispatch();

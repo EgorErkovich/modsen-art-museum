@@ -1,7 +1,7 @@
 import {
-  StyledBlockTitle,
-  BlockTitleTitle,
   BlockTitleSubtitle,
+  BlockTitleTitle,
+  StyledBlockTitle,
 } from '@components/blockTitle/styled';
 
 const BlockTitle = ({ title, subtitle }: { title: string; subtitle: string }) => {

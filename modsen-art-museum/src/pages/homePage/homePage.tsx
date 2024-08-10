@@ -1,18 +1,18 @@
-import { useEffect, useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   BlockTitle,
+  ErrorBoundary,
+  IApiCardData,
+  IRootState,
   MainGallery,
   MainPageTitle,
   OtherWorks,
-  SearchBar,
   Pagination,
+  SearchBar,
   SortBlock,
-  IApiCardData,
-  IRootState,
-  ErrorBoundary,
 } from '@index';
 import { setCards } from '@store';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HomePage = () => {
   const dispatch = useDispatch();

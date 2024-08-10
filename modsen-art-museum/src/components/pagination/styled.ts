@@ -60,4 +60,4 @@ const Arrow = styled.div<{ $direction: 'left' | 'right'; $isVisible: boolean }>`
   margin: 0 5px;
 `;
 
-export { PaginationContainer, Button, PageNumbers, PageNumber, Arrow };
+export { Arrow, Button, PageNumber, PageNumbers, PaginationContainer };

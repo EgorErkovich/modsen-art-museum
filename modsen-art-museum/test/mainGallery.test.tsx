@@ -1,9 +1,9 @@
+import MainGallery from '@components/mainGallery/mainGallery';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, it, beforeEach, expect, vi } from 'vitest';
-import MainGallery from '@components/mainGallery/mainGallery';
+import configureStore from 'redux-mock-store';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockStore = configureStore([]);
 

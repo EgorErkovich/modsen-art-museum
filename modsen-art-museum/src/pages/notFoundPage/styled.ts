@@ -21,4 +21,4 @@ const Message = styled.p`
   color: #333;
 `;
 
-export { Container, Title, Message };
+export { Container, Message, Title };

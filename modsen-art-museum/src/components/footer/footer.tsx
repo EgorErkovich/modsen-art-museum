@@ -1,7 +1,7 @@
-import { Logo } from '@index';
-import HeaderFooterContentBox from '@components/shared/styled';
-import StyledFooter from '@components/footer/styled';
 import logo from '@assets/logo modsen.png';
+import StyledFooter from '@components/footer/styled';
+import HeaderFooterContentBox from '@components/shared/styled';
+import { Logo } from '@index';
 
 const Footer = () => {
   return (

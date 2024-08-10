@@ -87,4 +87,4 @@ const IsEmptyText = styled.p`
   }
 `;
 
-export { StyledFavoritesWorks, Loader, Spinner, LoadingText, LoaderBox, IsEmptyText };
+export { IsEmptyText, Loader, LoaderBox, LoadingText, Spinner, StyledFavoritesWorks };

@@ -153,16 +153,16 @@ const HomeImgDoor = styled.svg`
 `;
 
 export {
-  HeaderOptionsBox,
-  HeaderHome,
-  HeaderFavorites,
-  HomeImgBox,
-  FavoritesImgBox,
-  FavoritesImg,
-  HomeImgHome,
-  HomeImgDoor,
-  HeaderOptionsText,
-  MobileMenu,
   BurgerIcon,
   DesktopMenu,
+  FavoritesImg,
+  FavoritesImgBox,
+  HeaderFavorites,
+  HeaderHome,
+  HeaderOptionsBox,
+  HeaderOptionsText,
+  HomeImgBox,
+  HomeImgDoor,
+  HomeImgHome,
+  MobileMenu,
 };

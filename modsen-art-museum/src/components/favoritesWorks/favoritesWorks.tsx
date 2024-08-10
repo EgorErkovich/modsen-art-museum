@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  IsEmptyText,
+  Loader,
+  LoaderBox,
+  LoadingText,
+  Spinner,
+  StyledFavoritesWorks,
+} from '@components/favoritesWorks/styled';
 import { IApiCardData, IMainCardData, IRootState, SmallCard } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
-import {
-  LoaderBox,
-  Loader,
-  Spinner,
-  LoadingText,
-  StyledFavoritesWorks,
-  IsEmptyText,
-} from '@components/favoritesWorks/styled';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FavoritesWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);
