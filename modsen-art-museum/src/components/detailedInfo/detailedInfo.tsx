@@ -15,6 +15,21 @@ const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails
   const sheetWord = dimensionsArray.shift();
   const dimensions = dimensionsArray.join(' ');
 
+  const overviewItems = [
+    { label: 'Artist nationality:', value: artDetails.nationality },
+    {
+      label: 'Dimensions:',
+      value: (
+        <>
+          <DimensionsTitle>{sheetWord}</DimensionsTitle> <span>{dimensions}</span>
+        </>
+      ),
+    },
+    { label: 'Credit Line:', value: artDetails.creditLine },
+    { label: 'Repository:', value: artDetails.repository },
+    { label: 'Availability:', value: artDetails.isPublic ? 'Public' : 'Private' },
+  ];
+
   return (
     <StyledDetailedInfo>
       <ArtInfo>
@@ -25,21 +40,11 @@ const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails
 
       <Overview>
         <ArtInfoOverviewTitle>Overview</ArtInfoOverviewTitle>
-        <OverviewData>
-          Artist nationality: <span>{artDetails.nationality}</span>
-        </OverviewData>
-        <OverviewData>
-          Dimensions: <DimensionsTitle>{sheetWord}</DimensionsTitle> <span>{dimensions}</span>
-        </OverviewData>
-        <OverviewData>
-          Credit Line: <span>{artDetails.creditLine}</span>
-        </OverviewData>
-        <OverviewData>
-          Repository: <span>{artDetails.repository}</span>
-        </OverviewData>
-        <OverviewData>
-          <span>{artDetails.isPublic ? 'Public' : 'Private'}</span>
-        </OverviewData>
+        {overviewItems.map((item, index) => (
+          <OverviewData key={index}>
+            {item.label} <span>{item.value}</span>
+          </OverviewData>
+        ))}
       </Overview>
     </StyledDetailedInfo>
   );

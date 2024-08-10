@@ -44,8 +44,8 @@ const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 60px;
-  right: 0;
+  top: 75px;
+  right: 30px;
   background-color: #333;
   padding: 16px;
   border-radius: 8px;
@@ -92,7 +92,9 @@ const HeaderOptionsText = styled.span`
 `;
 
 const HeaderHome = styled(HeaderHomeFavorites)`
-  width: 86px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 const HeaderFavorites = styled(HeaderHomeFavorites)``;
