@@ -1,16 +1,16 @@
 import {
   BurgerIcon,
   DesktopMenu,
+  DesktopMenuItem,
   FavoritesImg,
   FavoritesImgBox,
-  HeaderFavorites,
-  HeaderHome,
   HeaderOptionsBox,
   HeaderOptionsText,
   HomeImgBox,
   HomeImgDoor,
   HomeImgHome,
   MobileMenu,
+  MobileMenuItem,
 } from '@components/headerOptions/styled';
 import { IMenuItem } from '@index';
 import { useState } from 'react';
@@ -54,23 +54,20 @@ const HeaderOptions = () => {
     },
   ];
 
-  const renderMenuItem = ({ to, text, renderIcon, isMobile }: IMenuItem) => (
-    <Link key={to} to={to} style={{ textDecoration: 'none' }}>
-      <div onClick={isMobile ? toggleMenu : undefined}>
-        {isMobile ? (
-          <HeaderHome>
+  const renderMenuItem = ({ to, text, renderIcon, isMobile }: IMenuItem) => {
+    const MenuContainer = isMobile ? MobileMenuItem : DesktopMenuItem;
+
+    return (
+      <Link key={to} to={to} style={{ textDecoration: 'none' }}>
+        <div onClick={isMobile ? toggleMenu : undefined}>
+          <MenuContainer>
             {renderIcon}
             <HeaderOptionsText>{text}</HeaderOptionsText>
-          </HeaderHome>
-        ) : (
-          <HeaderFavorites>
-            {renderIcon}
-            <HeaderOptionsText>{text}</HeaderOptionsText>
-          </HeaderFavorites>
-        )}
-      </div>
-    </Link>
-  );
+          </MenuContainer>
+        </div>
+      </Link>
+    );
+  };
 
   return (
     <HeaderOptionsBox>

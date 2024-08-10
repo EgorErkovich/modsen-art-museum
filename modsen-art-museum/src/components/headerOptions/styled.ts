@@ -83,9 +83,9 @@ const HeaderOptionsText = styled.span`
   }
 `;
 
-const HeaderHome = styled(HeaderHomeFavorites)``;
+const MobileMenuItem = styled(HeaderHomeFavorites)``;
 
-const HeaderFavorites = styled(HeaderHomeFavorites)``;
+const DesktopMenuItem = styled(HeaderHomeFavorites)``;
 
 const HomeFavoritesImgBox = styled.div`
   display: flex;
@@ -144,14 +144,14 @@ const HomeImgDoor = styled.svg`
 export {
   BurgerIcon,
   DesktopMenu,
+  DesktopMenuItem,
   FavoritesImg,
   FavoritesImgBox,
-  HeaderFavorites,
-  HeaderHome,
   HeaderOptionsBox,
   HeaderOptionsText,
   HomeImgBox,
   HomeImgDoor,
   HomeImgHome,
   MobileMenu,
+  MobileMenuItem,
 };
