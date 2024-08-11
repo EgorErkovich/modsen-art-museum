@@ -25,26 +25,27 @@ const validationSchema = Yup.object().shape({
     .nullable(),
 });
 
-const formatDimensions = (dimensions: string): string => {
-  if (!dimensions) return 'Unknown dimensions';
-
+const formatDimensions = (dimensions: string) => {
+  let formattedDimensions = 'Unknown dimensions';
   const sheetIndex = dimensions.indexOf('Sheet:');
   const framedIndex = dimensions.indexOf('; Framed:');
   let slicedDimensions = '';
 
   if (sheetIndex === -1) {
-    slicedDimensions = dimensions
+    slicedDimensions = `Sheet: ${dimensions
       .split('\n')[0]
       .slice(dimensions.split('\n')[0].indexOf(':') + 2, framedIndex)
-      .trim();
+      .trim()}`;
   } else {
     slicedDimensions = dimensions.split('\n')[0].slice(sheetIndex, framedIndex).trim();
   }
 
   const cmPart = slicedDimensions.split('(')[0].replace('Sheet:', '').replace('a)', '').trim();
-  const inPart = slicedDimensions.split('(')[1]?.replace(')', '').trim() || '';
+  const inPart = slicedDimensions.split('(')[1].replace(')', '').trim();
 
-  return `Sheet: ${inPart} (${cmPart})`;
+  formattedDimensions = `Sheet: ${inPart} (${cmPart})`;
+
+  return formattedDimensions;
 };
 
 const handleSortByAlphabet = (

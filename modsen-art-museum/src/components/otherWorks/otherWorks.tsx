@@ -1,5 +1,5 @@
 import StyledOtherWorks from '@components/otherWorks/styled';
-import { IApiCardData, IMainCardData, IRootState, Loader, SmallCard } from '@index';
+import { Card, IApiCardData, IMainCardData, IRootState, Loader } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,7 +81,12 @@ const OtherWorks = () => {
   return (
     <StyledOtherWorks>
       {worksData.map((work) => (
-        <SmallCard key={work.id} cardData={work} onToggleFavorite={handleToggleFavorite} />
+        <Card
+          key={work.id}
+          cardData={work}
+          onToggleFavorite={handleToggleFavorite}
+          isSmall={true}
+        />
       ))}
     </StyledOtherWorks>
   );

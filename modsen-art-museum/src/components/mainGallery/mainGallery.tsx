@@ -1,12 +1,5 @@
 import { StyledMainGallery, StyledMainGalleryBox } from '@components/mainGallery/styled';
-import {
-  IApiCardData,
-  IRootState,
-  Loader,
-  MainGalleryCard,
-  trimArtistName,
-  trimArtName,
-} from '@index';
+import { Card, IApiCardData, IRootState, Loader, trimArtistName, trimArtName } from '@index';
 import { addFavoriteId, AppDispatch, removeFavoriteId, setFavoriteIds } from '@store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,7 +54,7 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
             const isFavorite = favoriteImageIds.includes(cardData.id);
 
             return (
-              <MainGalleryCard
+              <Card
                 key={cardData.id}
                 cardData={{
                   id: cardData.id,
@@ -72,6 +65,7 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
                   isFavorite,
                 }}
                 onToggleFavorite={handleToggleFavorite}
+                isSmall={false}
               />
             );
           })

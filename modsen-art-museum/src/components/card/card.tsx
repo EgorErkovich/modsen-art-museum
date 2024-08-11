@@ -7,12 +7,12 @@ import {
   InfoUser,
   InfoUserArt,
   InfoUserArtist,
-  StyledMainGalleryCard,
+  StyledCard,
+  StyledLink,
   UserArtArtistBox,
-} from '@components/mainGalleryCard/styled';
-import { IMainGalleryCardProps } from 'index';
-import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+} from '@components/card/styled';
+import { IMainGalleryCardProps, trimArtistName, trimArtName } from '@index';
+import React from 'react';
 
 const handleFavoriteToggle = (
   cardId: number,
@@ -22,16 +22,19 @@ const handleFavoriteToggle = (
   onToggleFavorite(cardId, event);
 };
 
-const MainGalleryCard: React.FC<IMainGalleryCardProps> = memo(({ cardData, onToggleFavorite }) => {
+const Card: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite, isSmall }) => {
+  const defaultImageSrc =
+    'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
+
   return (
-    <Link to={`/details/${cardData.id}`}>
-      <StyledMainGalleryCard>
-        <CardImg src={cardData.src} />
-        <CardInfo>
+    <StyledLink to={`/details/${cardData.id}`}>
+      <StyledCard $isSmall={isSmall}>
+        <CardImg $isSmall={isSmall} $backgroundImage={cardData.src || defaultImageSrc} />
+        <CardInfo $isSmall={isSmall}>
           <InfoUser>
             <UserArtArtistBox>
-              <InfoUserArt>{cardData.artName}</InfoUserArt>
-              <InfoUserArtist>{cardData.artist}</InfoUserArtist>
+              <InfoUserArt>{trimArtName(cardData.artName, 25)}</InfoUserArt>
+              <InfoUserArtist>{trimArtistName(cardData.artist)}</InfoUserArtist>
             </UserArtArtistBox>
             {cardData.isPublic ? 'Public' : 'Private'}
           </InfoUser>
@@ -47,9 +50,9 @@ const MainGalleryCard: React.FC<IMainGalleryCardProps> = memo(({ cardData, onTog
             </FavoritesImgBox>
           </CardInfoIcon>
         </CardInfo>
-      </StyledMainGalleryCard>
-    </Link>
+      </StyledCard>
+    </StyledLink>
   );
-});
+};
 
-export default MainGalleryCard;
+export default Card;

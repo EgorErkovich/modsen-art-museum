@@ -18,6 +18,7 @@ export interface IDetailedInfoProps extends IMainCardData {
 export interface IMainGalleryCardProps {
   cardData: IMainCardData;
   onToggleFavorite: (id: number, event: React.MouseEvent) => void;
+  isSmall: boolean;
 }
 
 export interface IApiCardData {

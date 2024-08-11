@@ -1,28 +1,121 @@
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledSmallCard = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 16px;
+const StyledCard = styled.div<{ $isSmall: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(12px, 1.11vw, 16px);
-  border: 1px 0px 0px 0px;
-  background-color: #ffffff;
   border: 1px solid #f0f1f1;
+
+  ${({ $isSmall }) =>
+    $isSmall
+      ? `
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      justify-content: space-between;
+      gap: clamp(12px, 1.11vw, 16px);
+      background-color: #ffffff;
+    `
+      : `
+      flex-direction: column;
+      position: relative;
+      width: clamp(220px, 27.1vw, 387px);
+      height: clamp(300px, 36vw, 514px);
+      aspect-ratio: 1 / 1.3;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: auto;
+      }
+    `}
 `;
 
-const CardImg = styled.div<{ $backgroundImage: string }>`
-  width: 80px;
-  aspect-ratio: 1 / 1;
+const StyledLink = styled(RouterLink)`
+  text-decoration: none;
+`;
+
+const CardImg = styled.div<{ $isSmall?: boolean; $backgroundImage: string }>`
+  aspect-ratio: ${({ $isSmall }) => ($isSmall ? '1 / 1' : '1 / 1.15')};
   height: auto;
-  background-image: ${({ $backgroundImage }) => `url(${$backgroundImage})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  ${({ $isSmall, $backgroundImage }) =>
+    $isSmall
+      ? `
+        width: 80px;
+        background-image: url(${$backgroundImage});
+      `
+      : `
+        width: 100%;
+        max-height: 444px;
+        background-image: url(${$backgroundImage});
+        
+        @media (max-width: 768px) {
+          max-height: none;
+        }
+      `}
 `;
+
+const CardInfo = styled.div<{ $isSmall: boolean }>`
+  ${({ $isSmall }) =>
+    $isSmall
+      ? `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+      `
+      : `
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 86%;
+        max-width: 334px;
+        max-height: 132px;
+        height: auto;
+        aspect-ratio: 1 / 0.4;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: calc((5 / 112) * 100vw - (240 / 7) * 1px);
+        padding: clamp(16px, 2.22vw, 32px) clamp(12px, 1.67vw, 24px) clamp(16px, 2.22vw, 32px) clamp(12px, 1.67vw, 24px);
+        gap: 8px;
+        background-color: white;
+        border: 1px solid #f0f1f1;
+
+        @media (max-width: 768px) {
+          max-width: none;
+          max-height: none;
+          margin-bottom: 0px;
+        }
+    `}
+`;
+
+/* const CardInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 86%;
+  max-width: 334px;
+  max-height: 132px;
+  height: auto;
+  aspect-ratio: 1 / 0.4;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: calc((5 / 112) * 100vw - (240 / 7) * 1px);
+  padding: clamp(16px, 2.22vw, 32px) clamp(12px, 1.67vw, 24px) clamp(16px, 2.22vw, 32px)
+    clamp(12px, 1.67vw, 24px);
+  gap: 8px;
+  background-color: white;
+  border: 1px solid #f0f1f1;
+
+  @media (max-width: 768px) {
+    max-width: none;
+    max-height: none;
+    margin-bottom: 0px;
+  }
+`; */
 
 const InfoUser = styled.div`
   display: flex;
@@ -43,10 +136,6 @@ const InfoUser = styled.div`
     font-size: clamp(14px, 2.34vw, 18px);
     line-height: 26.32px;
   }
-`;
-
-const StyledLink = styled(RouterLink)`
-  text-decoration: none;
 `;
 
 const UserArtArtistBox = styled.div`
@@ -137,13 +226,14 @@ const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
 
 export {
   CardImg,
+  CardInfo,
   CardInfoIcon,
   FavoritesImg,
   FavoritesImgBox,
   InfoUser,
   InfoUserArt,
   InfoUserArtist,
+  StyledCard,
   StyledLink,
-  StyledSmallCard,
   UserArtArtistBox,
 };

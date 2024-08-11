@@ -1,5 +1,5 @@
 import { IsEmptyText, StyledFavoritesWorks } from '@components/favoritesWorks/styled';
-import { IApiCardData, IMainCardData, IRootState, Loader, SmallCard } from '@index';
+import { Card, IApiCardData, IMainCardData, IRootState, Loader } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -80,7 +80,12 @@ const FavoritesWorks = () => {
         </IsEmptyText>
       ) : (
         worksData.map((work) => (
-          <SmallCard key={work.id} cardData={work} onToggleFavorite={handleToggleFavorite} />
+          <Card
+            key={work.id}
+            cardData={work}
+            onToggleFavorite={handleToggleFavorite}
+            isSmall={true}
+          />
         ))
       )}
     </StyledFavoritesWorks>
