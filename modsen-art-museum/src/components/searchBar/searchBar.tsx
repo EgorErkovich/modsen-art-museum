@@ -1,7 +1,12 @@
-import StyledInput from '@components/searchBar/styled';
+import {
+  ErrorText,
+  FormContainer,
+  InputContainer,
+  StyledInput,
+} from '@components/searchBar/styled';
 import { IApiCardData, IRootState, validationSchema } from '@index';
 import { setCards, setCurrentPage, setInputValue, setTotalPages } from '@store';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -89,15 +94,8 @@ const SearchBar: React.FC = () => {
         };
 
         return (
-          <Form style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                width: 'auto',
-              }}
-            >
+          <FormContainer>
+            <InputContainer>
               <Field
                 name="searchQuery"
                 as={StyledInput}
@@ -106,14 +104,9 @@ const SearchBar: React.FC = () => {
                 onChange={handleInputChange}
                 value={inputValue}
               />
-              <ErrorMessage
-                name="searchQuery"
-                render={(msg) => (
-                  <div style={{ color: 'red', marginTop: '8px', marginLeft: '5px' }}>{msg}</div>
-                )}
-              />
-            </div>
-          </Form>
+              <ErrorMessage name="searchQuery" render={(msg) => <ErrorText>{msg}</ErrorText>} />
+            </InputContainer>
+          </FormContainer>
         );
       }}
     </Formik>

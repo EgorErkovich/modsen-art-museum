@@ -6,11 +6,11 @@ import {
   InfoUser,
   InfoUserArt,
   InfoUserArtist,
+  StyledLink,
   StyledSmallCard,
   UserArtArtistBox,
 } from '@components/smallCard/styled';
 import { IMainGalleryCardProps, trimArtistName, trimArtName } from '@index';
-import { Link } from 'react-router-dom';
 
 const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite }) => {
   const handleFavoriteToggle = (event: React.MouseEvent) => {
@@ -21,9 +21,9 @@ const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite
     'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
 
   return (
-    <Link to={`/details/${cardData.id}`} style={{ textDecoration: 'none' }}>
+    <StyledLink to={`/details/${cardData.id}`}>
       <StyledSmallCard>
-        <CardImg style={{ backgroundImage: `url(${cardData.src || defaultImageSrc})` }} />
+        <CardImg backgroundImage={cardData.src || defaultImageSrc} />
         <InfoUser>
           <UserArtArtistBox>
             <InfoUserArt>{trimArtName(cardData.artName, 25)}</InfoUserArt>
@@ -39,7 +39,7 @@ const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite
           </FavoritesImgBox>
         </CardInfoIcon>
       </StyledSmallCard>
-    </Link>
+    </StyledLink>
   );
 };
 

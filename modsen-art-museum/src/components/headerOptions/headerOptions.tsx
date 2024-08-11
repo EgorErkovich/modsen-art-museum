@@ -11,10 +11,11 @@ import {
   HomeImgHome,
   MobileMenu,
   MobileMenuItem,
+  StyledLink,
 } from '@components/headerOptions/styled';
 import { IMenuItem } from '@index';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const HeaderOptions = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,14 +59,14 @@ const HeaderOptions = () => {
     const MenuContainer = isMobile ? MobileMenuItem : DesktopMenuItem;
 
     return (
-      <Link key={to} to={to} style={{ textDecoration: 'none' }}>
+      <StyledLink key={to} to={to}>
         <div onClick={isMobile ? toggleMenu : undefined}>
           <MenuContainer>
             {renderIcon}
             <HeaderOptionsText>{text}</HeaderOptionsText>
           </MenuContainer>
         </div>
-      </Link>
+      </StyledLink>
     );
   };
 

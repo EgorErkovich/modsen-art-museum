@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledSmallCard = styled.div`
@@ -13,11 +14,11 @@ const StyledSmallCard = styled.div`
   border: 1px solid #f0f1f1;
 `;
 
-const CardImg = styled.div`
+const CardImg = styled.div<{ backgroundImage: string }>`
   width: 80px;
   aspect-ratio: 1 / 1;
   height: auto;
-  background-image: url('https://www.artic.edu/iiif/2/e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9/full/843,/0/default.jpg');
+  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,6 +43,10 @@ const InfoUser = styled.div`
     font-size: clamp(14px, 2.34vw, 18px);
     line-height: 26.32px;
   }
+`;
+
+const StyledLink = styled(RouterLink)`
+  text-decoration: none;
 `;
 
 const UserArtArtistBox = styled.div`
@@ -138,6 +143,7 @@ export {
   InfoUser,
   InfoUserArt,
   InfoUserArtist,
+  StyledLink,
   StyledSmallCard,
   UserArtArtistBox,
 };

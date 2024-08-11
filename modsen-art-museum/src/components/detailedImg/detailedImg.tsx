@@ -21,7 +21,7 @@ const DetailedImg = ({
   };
 
   return (
-    <StyledDetailedImg data-testid="styled-detailed-img" style={{ backgroundImage: `url(${src})` }}>
+    <StyledDetailedImg data-testid="styled-detailed-img" backgroundImage={src}>
       <CardInfoIcon $isFavorite={isFavorite} onClick={handleFavoriteToggle}>
         <FavoritesImgBox>
           <FavoritesImg>

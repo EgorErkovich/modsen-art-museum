@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const StyledDetailedImg = styled.div`
+const StyledDetailedImg = styled.div<{ backgroundImage: string }>`
   position: relative;
   width: clamp(300px, 34.6vw, 497px);
   aspect-ratio: 1 / 1.15;
   height: auto;
-  background-image: url('https://www.artic.edu/iiif/2/e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9/full/843,/0/default.jpg');
+  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

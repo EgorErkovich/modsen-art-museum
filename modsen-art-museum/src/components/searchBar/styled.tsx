@@ -34,4 +34,23 @@ const StyledInput = styled.input`
   }
 `;
 
-export default StyledInput;
+const FormContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+`;
+
+const ErrorText = styled.div`
+  color: red;
+  margin-top: 8px;
+  margin-left: 5px;
+`;
+
+export { ErrorText, FormContainer, InputContainer, StyledInput };

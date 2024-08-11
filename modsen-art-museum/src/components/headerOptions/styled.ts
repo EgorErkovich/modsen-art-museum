@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderOptionsBox = styled.div`
@@ -141,6 +142,10 @@ const HomeImgDoor = styled.svg`
   }
 `;
 
+const StyledLink = styled(RouterLink)`
+  text-decoration: none;
+`;
+
 export {
   BurgerIcon,
   DesktopMenu,
@@ -154,4 +159,5 @@ export {
   HomeImgHome,
   MobileMenu,
   MobileMenuItem,
+  StyledLink,
 };
