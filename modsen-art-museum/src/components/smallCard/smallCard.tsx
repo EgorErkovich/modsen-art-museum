@@ -11,11 +11,15 @@ import {
   UserArtArtistBox,
 } from '@components/smallCard/styled';
 import { IMainGalleryCardProps, trimArtistName, trimArtName } from '@index';
+import React, { useCallback } from 'react';
 
 const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite }) => {
-  const handleFavoriteToggle = (event: React.MouseEvent) => {
-    onToggleFavorite(cardData.id, event);
-  };
+  const handleFavoriteToggle = useCallback(
+    (event: React.MouseEvent) => {
+      onToggleFavorite(cardData.id, event);
+    },
+    [cardData.id, onToggleFavorite]
+  );
 
   const defaultImageSrc =
     'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
@@ -23,7 +27,7 @@ const SmallCard: React.FC<IMainGalleryCardProps> = ({ cardData, onToggleFavorite
   return (
     <StyledLink to={`/details/${cardData.id}`}>
       <StyledSmallCard>
-        <CardImg backgroundImage={cardData.src || defaultImageSrc} />
+        <CardImg $backgroundImage={cardData.src || defaultImageSrc} />
         <InfoUser>
           <UserArtArtistBox>
             <InfoUserArt>{trimArtName(cardData.artName, 25)}</InfoUserArt>

@@ -18,18 +18,11 @@ const Logo = ({ museumTextColor }: { museumTextColor?: string }) => {
           <path d="M22.4999 1L44 14H1L22.4999 1Z" />
         </LogoRoof>
         <LogoColumnBox>
-          <LogoColumn>
-            <path d="M1 19V1" />
-          </LogoColumn>
-          <LogoColumn>
-            <path d="M1 19V1" />
-          </LogoColumn>
-          <LogoColumn>
-            <path d="M1 19V1" />
-          </LogoColumn>
-          <LogoColumn>
-            <path d="M1 19V1" />
-          </LogoColumn>
+          {[...Array(4)].map((_, index) => (
+            <LogoColumn key={index}>
+              <path d="M1 19V1" />
+            </LogoColumn>
+          ))}
         </LogoColumnBox>
         <LogoFoundation>
           <path d="M1 1H49" />

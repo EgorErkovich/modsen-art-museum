@@ -1,12 +1,8 @@
 import { SortBlockContainer, SortButton } from '@components/sortBlock/styled';
+import { ISortBlockProps } from '@index';
 import React from 'react';
 
-interface SortBlockProps {
-  onSortByAlphabet: () => void;
-  onSortByDate: () => void;
-}
-
-const SortBlock: React.FC<SortBlockProps> = ({ onSortByAlphabet, onSortByDate }) => {
+const SortBlock: React.FC<ISortBlockProps> = ({ onSortByAlphabet, onSortByDate }) => {
   return (
     <SortBlockContainer>
       <SortButton onClick={onSortByAlphabet}>Sort by Alphabet</SortButton>

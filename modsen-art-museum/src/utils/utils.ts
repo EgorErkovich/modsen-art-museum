@@ -25,4 +25,56 @@ const validationSchema = Yup.object().shape({
     .nullable(),
 });
 
-export { trimArtistName, trimArtName, validationSchema };
+const formatDimensions = (dimensions: string): string => {
+  if (!dimensions) return 'Unknown dimensions';
+
+  const sheetIndex = dimensions.indexOf('Sheet:');
+  const framedIndex = dimensions.indexOf('; Framed:');
+  let slicedDimensions = '';
+
+  if (sheetIndex === -1) {
+    slicedDimensions = dimensions
+      .split('\n')[0]
+      .slice(dimensions.split('\n')[0].indexOf(':') + 2, framedIndex)
+      .trim();
+  } else {
+    slicedDimensions = dimensions.split('\n')[0].slice(sheetIndex, framedIndex).trim();
+  }
+
+  const cmPart = slicedDimensions.split('(')[0].replace('Sheet:', '').replace('a)', '').trim();
+  const inPart = slicedDimensions.split('(')[1]?.replace(')', '').trim() || '';
+
+  return `Sheet: ${inPart} (${cmPart})`;
+};
+
+const handleSortByAlphabet = (
+  sortOrder: 'asc' | 'desc',
+  setSortOrder: React.Dispatch<React.SetStateAction<'asc' | 'desc'>>,
+  setSortByDate: React.Dispatch<React.SetStateAction<'asc' | 'desc' | null>>
+) => {
+  const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+  setSortOrder(newOrder);
+  setSortByDate(null);
+};
+
+const handleSortByDate = (
+  sortByDate: 'asc' | 'desc' | null,
+  setSortOrder: React.Dispatch<React.SetStateAction<'asc' | 'desc'>>,
+  setSortByDate: React.Dispatch<React.SetStateAction<'asc' | 'desc' | null>>,
+  fetchSortedData: (order: 'asc' | 'desc', sortBy: string) => Promise<void>
+) => {
+  const newDateOrder = sortByDate === 'asc' ? 'desc' : 'asc';
+  setSortByDate(newDateOrder);
+
+  setSortOrder(newDateOrder === 'asc' ? 'asc' : 'desc');
+  fetchSortedData(newDateOrder, 'date_start');
+};
+
+export {
+  formatDimensions,
+  handleSortByAlphabet,
+  handleSortByDate,
+  trimArtistName,
+  trimArtName,
+  validationSchema,
+};

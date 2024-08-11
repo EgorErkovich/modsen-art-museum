@@ -55,3 +55,8 @@ export interface IMenuItem {
   isVisible: boolean;
   isMobile: boolean;
 }
+
+export interface ISortBlockProps {
+  onSortByAlphabet: () => void;
+  onSortByDate: () => void;
+}

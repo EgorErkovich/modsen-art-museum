@@ -11,38 +11,40 @@ import {
 import { IDetailedInfoProps } from '@index';
 
 const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
-  const dimensionsArray = artDetails.dimensions.split(' ');
+  const { artName, artist, years, nationality, creditLine, repository, isPublic, dimensions } =
+    artDetails;
+  const dimensionsArray = dimensions.split(' ');
   const sheetWord = dimensionsArray.shift();
-  const dimensions = dimensionsArray.join(' ');
+  const dimensionsFormatted = dimensionsArray.join(' ');
 
   const overviewItems = [
-    { label: 'Artist nationality:', value: artDetails.nationality },
+    { label: 'Artist nationality:', value: nationality },
     {
       label: 'Dimensions:',
       value: (
         <>
-          <DimensionsTitle>{sheetWord}</DimensionsTitle> <span>{dimensions}</span>
+          <DimensionsTitle>{sheetWord}</DimensionsTitle> <span>{dimensionsFormatted}</span>
         </>
       ),
     },
-    { label: 'Credit Line:', value: artDetails.creditLine },
-    { label: 'Repository:', value: artDetails.repository },
-    { label: 'Availability:', value: artDetails.isPublic ? 'Public' : 'Private' },
+    { label: 'Credit Line:', value: creditLine },
+    { label: 'Repository:', value: repository },
+    { label: 'Availability:', value: isPublic ? 'Public' : 'Private' },
   ];
 
   return (
     <StyledDetailedInfo>
       <ArtInfo>
-        <ArtInfoOverviewTitle>{artDetails.artName}</ArtInfoOverviewTitle>
-        <ArtInfoArtist>{artDetails.artist}</ArtInfoArtist>
-        <ArtInfoYears>{artDetails.years}</ArtInfoYears>
+        <ArtInfoOverviewTitle>{artName}</ArtInfoOverviewTitle>
+        <ArtInfoArtist>{artist}</ArtInfoArtist>
+        <ArtInfoYears>{years}</ArtInfoYears>
       </ArtInfo>
 
       <Overview>
         <ArtInfoOverviewTitle>Overview</ArtInfoOverviewTitle>
-        {overviewItems.map((item, index) => (
+        {overviewItems.map(({ label, value }, index) => (
           <OverviewData key={index}>
-            {item.label} <span>{item.value}</span>
+            {label} <span>{value}</span>
           </OverviewData>
         ))}
       </Overview>

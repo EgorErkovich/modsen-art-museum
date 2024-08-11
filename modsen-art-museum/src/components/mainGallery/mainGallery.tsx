@@ -7,12 +7,26 @@ import {
   trimArtistName,
   trimArtName,
 } from '@index';
-import { addFavoriteId, removeFavoriteId, setFavoriteIds } from '@store';
+import { addFavoriteId, AppDispatch, removeFavoriteId, setFavoriteIds } from '@store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+const toggleFavorite = (cardId: number, favoriteImageIds: number[], dispatch: AppDispatch) => {
+  const updatedFavorites = favoriteImageIds.includes(cardId)
+    ? favoriteImageIds.filter((id) => id !== cardId)
+    : [...favoriteImageIds, cardId];
+
+  if (favoriteImageIds.includes(cardId)) {
+    dispatch(removeFavoriteId(cardId));
+  } else {
+    dispatch(addFavoriteId(cardId));
+  }
+
+  localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
+};
+
 const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const cards = useSelector((state: IRootState) => state.pagination.cards);
   const favoriteImageIds = useSelector((state: IRootState) => state.favorites.favoriteIds);
 
@@ -30,18 +44,7 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
   const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
-
-    const updatedFavorites = favoriteImageIds.includes(cardId)
-      ? favoriteImageIds.filter((id) => id !== cardId)
-      : [...favoriteImageIds, cardId];
-
-    if (favoriteImageIds.includes(cardId)) {
-      dispatch(removeFavoriteId(cardId));
-    } else {
-      dispatch(addFavoriteId(cardId));
-    }
-
-    localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
+    toggleFavorite(cardId, favoriteImageIds, dispatch);
   };
 
   return (

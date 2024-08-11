@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const StyledDetailedImg = styled.div<{ backgroundImage: string }>`
+const StyledDetailedImg = styled.div<{ $backgroundImage: string }>`
   position: relative;
   width: clamp(300px, 34.6vw, 497px);
   aspect-ratio: 1 / 1.15;
   height: auto;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  background-image: ${({ $backgroundImage }) => `url(${$backgroundImage})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

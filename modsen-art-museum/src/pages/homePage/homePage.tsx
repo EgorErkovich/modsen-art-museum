@@ -1,5 +1,7 @@
 import {
   BlockTitle,
+  handleSortByAlphabet,
+  handleSortByDate,
   IApiCardData,
   IRootState,
   MainGallery,
@@ -72,26 +74,17 @@ const HomePage = () => {
     fetchSortedData(sortOrder, sortBy);
   }, [currentPage, sortOrder, sortByDate, fetchSortedData]);
 
-  const handleSortByAlphabet = () => {
-    const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-    setSortOrder(newOrder);
-    setSortByDate(null);
-  };
-
-  const handleSortByDate = () => {
-    const newDateOrder = sortByDate === 'asc' ? 'desc' : 'asc';
-    setSortByDate(newDateOrder);
-
-    setSortOrder(newDateOrder === 'asc' ? 'asc' : 'desc');
-    fetchSortedData(newDateOrder, 'date_start');
-  };
-
   return (
     <>
       <MainPageTitle />
       <SearchBar />
       <BlockTitle title={titleGallery} subtitle={subtitleGallery} />
-      <SortBlock onSortByAlphabet={handleSortByAlphabet} onSortByDate={handleSortByDate} />
+      <SortBlock
+        onSortByAlphabet={() => handleSortByAlphabet(sortOrder, setSortOrder, setSortByDate)}
+        onSortByDate={() =>
+          handleSortByDate(sortByDate, setSortOrder, setSortByDate, fetchSortedData)
+        }
+      />
       <MainGallery isLoading={isLoading} />
       <Pagination setIsLoading={setIsLoading} />
       <BlockTitle title={titleOther} subtitle={subtitleOther} />

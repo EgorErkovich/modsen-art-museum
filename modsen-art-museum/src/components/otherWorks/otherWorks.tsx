@@ -4,6 +4,26 @@ import { addFavoriteId, removeFavoriteId } from '@store';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+const fetchArtworks = async () => {
+  const response = await fetch(
+    'https://api.artic.edu/api/v1/artworks?page=1&limit=9&fields=id,title,artist_display,image_id,is_public_domain'
+  );
+  const data = await response.json();
+
+  return data.data;
+};
+
+const mapArtworks = (data: IApiCardData[], favoriteImageIds: number[]): IMainCardData[] => {
+  return data.map((work: IApiCardData) => ({
+    id: work.id,
+    src: `https://www.artic.edu/iiif/2/${work.image_id}/full/843,/0/default.jpg`,
+    artName: work.title,
+    artist: work.artist_display,
+    isPublic: work.is_public_domain,
+    isFavorite: favoriteImageIds.includes(work.id),
+  }));
+};
+
 const OtherWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,19 +32,8 @@ const OtherWorks = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch(
-        'https://api.artic.edu/api/v1/artworks?page=1&limit=9&fields=id,title,artist_display,image_id,is_public_domain'
-      );
-      const data = await response.json();
-      const artworks: IMainCardData[] = data.data.map((work: IApiCardData) => ({
-        id: work.id,
-        src: `https://www.artic.edu/iiif/2/${work.image_id}/full/843,/0/default.jpg`,
-        artName: work.title,
-        artist: work.artist_display,
-        isPublic: work.is_public_domain,
-        isFavorite: favoriteImageIds.includes(work.id),
-      }));
-
+      const data = await fetchArtworks();
+      const artworks = mapArtworks(data, favoriteImageIds);
       setWorksData(artworks);
     } catch (error) {
       console.error('Loading error', error);
@@ -37,21 +46,33 @@ const OtherWorks = () => {
     fetchData();
   }, [fetchData]);
 
-  const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
-    event.stopPropagation();
-    event.preventDefault();
-    const updatedFavorites = favoriteImageIds.includes(cardId)
-      ? favoriteImageIds.filter((id) => id !== cardId)
-      : [...favoriteImageIds, cardId];
+  const toggleFavorite = useCallback(
+    (cardId: number) => {
+      const isFavorite = favoriteImageIds.includes(cardId);
 
-    if (favoriteImageIds.includes(cardId)) {
-      dispatch(removeFavoriteId(cardId));
-    } else {
-      dispatch(addFavoriteId(cardId));
-    }
+      if (isFavorite) {
+        dispatch(removeFavoriteId(cardId));
+      } else {
+        dispatch(addFavoriteId(cardId));
+      }
 
-    localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
-  };
+      const updatedFavorites = isFavorite
+        ? favoriteImageIds.filter((id) => id !== cardId)
+        : [...favoriteImageIds, cardId];
+
+      localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
+    },
+    [favoriteImageIds, dispatch]
+  );
+
+  const handleToggleFavorite = useCallback(
+    (cardId: number, event: React.MouseEvent) => {
+      event.stopPropagation();
+      event.preventDefault();
+      toggleFavorite(cardId);
+    },
+    [toggleFavorite]
+  );
 
   if (isLoading) {
     return <Loader />;
@@ -59,17 +80,9 @@ const OtherWorks = () => {
 
   return (
     <StyledOtherWorks>
-      {worksData.map((work) => {
-        const isFavorite = favoriteImageIds.includes(work.id);
-
-        return (
-          <SmallCard
-            key={work.id}
-            cardData={{ ...work, isFavorite }}
-            onToggleFavorite={handleToggleFavorite}
-          />
-        );
-      })}
+      {worksData.map((work) => (
+        <SmallCard key={work.id} cardData={work} onToggleFavorite={handleToggleFavorite} />
+      ))}
     </StyledOtherWorks>
   );
 };

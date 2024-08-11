@@ -31,5 +31,13 @@ export type {
   IMenuItem,
   IPaginationState,
   IRootState,
+  ISortBlockProps,
 } from '@utils/interfaces';
-export { trimArtistName, trimArtName, validationSchema } from '@utils/utils';
+export {
+  formatDimensions,
+  handleSortByAlphabet,
+  handleSortByDate,
+  trimArtistName,
+  trimArtName,
+  validationSchema,
+} from '@utils/utils';

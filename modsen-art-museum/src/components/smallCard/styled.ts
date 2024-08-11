@@ -14,11 +14,11 @@ const StyledSmallCard = styled.div`
   border: 1px solid #f0f1f1;
 `;
 
-const CardImg = styled.div<{ backgroundImage: string }>`
+const CardImg = styled.div<{ $backgroundImage: string }>`
   width: 80px;
   aspect-ratio: 1 / 1;
   height: auto;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  background-image: ${({ $backgroundImage }) => `url(${$backgroundImage})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
