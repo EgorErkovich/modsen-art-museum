@@ -1,3 +1,5 @@
+import * as Yup from 'yup';
+
 const trimArtistName = (artist: string): string => {
   const cleanedArtist = artist.replace(/\n/g, ';');
   const regex = /[^\p{L}\s]/gu;
@@ -17,4 +19,10 @@ const trimArtName = (artName: string, maxLength: number): string => {
   return lastSpaceIndex > -1 ? `${trimmedName.slice(0, lastSpaceIndex)}...` : `${trimmedName}...`;
 };
 
-export { trimArtistName, trimArtName };
+const validationSchema = Yup.object().shape({
+  searchQuery: Yup.string()
+    .matches(/^[A-Za-z\s-]*$/, 'Only latin letters, spaces, and dashes are allowed')
+    .nullable(),
+});
+
+export { trimArtistName, trimArtName, validationSchema };

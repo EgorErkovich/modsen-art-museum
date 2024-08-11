@@ -1,30 +1,15 @@
 import StyledInput from '@components/searchBar/styled';
-import { IRootState } from '@index';
+import { IApiCardData, IRootState, validationSchema } from '@index';
 import { setCards, setCurrentPage, setInputValue, setTotalPages } from '@store';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from 'yup';
-
-export interface IApiCardData {
-  id: number;
-  title: string;
-  artist_display: string;
-  image_id: string;
-  is_public_domain: boolean;
-}
 
 const SearchBar: React.FC = () => {
   const [inputValue, setInputValueState] = useState<string>('');
   const [debouncedInputValue, setDebouncedInputValue] = useState<string>('');
   const dispatch = useDispatch();
   const currentPage = useSelector((state: IRootState) => state.pagination.currentPage);
-
-  const validationSchema = Yup.object().shape({
-    searchQuery: Yup.string()
-      .matches(/^[A-Za-z\s-]*$/, 'Only latin letters, spaces, and dashes are allowed')
-      .nullable(),
-  });
 
   const handleSubmit = () => {
     dispatch(setCurrentPage(1));
@@ -88,7 +73,7 @@ const SearchBar: React.FC = () => {
         fetchData();
       }
     }
-  }, [debouncedInputValue, currentPage, dispatch, validationSchema]);
+  }, [debouncedInputValue, currentPage, dispatch]);
 
   return (
     <Formik

@@ -1,4 +1,8 @@
-import { DetailInfoPage, FavoritesPage, HomePage, Layout, NotFoundPage } from '@index';
+import Layout from '@app/layout/layout';
+import DetailInfoPage from '@pages/detailInfoPage/detailInfoPage';
+import FavoritesPage from '@pages/favoritesPage/favoritesPage';
+import HomePage from '@pages/homePage/homePage';
+import NotFoundPage from '@pages/notFoundPage/notFoundPage';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 const routes = [

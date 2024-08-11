@@ -32,4 +32,4 @@ export type {
   IPaginationState,
   IRootState,
 } from '@utils/interfaces';
-export { trimArtistName, trimArtName } from '@utils/utils';
+export { trimArtistName, trimArtName, validationSchema } from '@utils/utils';
