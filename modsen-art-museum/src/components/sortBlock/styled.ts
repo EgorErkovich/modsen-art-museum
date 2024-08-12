@@ -11,8 +11,8 @@ const SortButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #e0a449;
-  color: white;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.background};
   cursor: pointer;
 
   &:hover {

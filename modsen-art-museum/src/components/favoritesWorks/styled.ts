@@ -27,17 +27,17 @@ const IsEmptyText = styled.p`
   grid-column: 1 / -1;
   grid-row: 2 / 3;
   margin-top: 10px;
-  font-family: Lexend Deca;
-  font-size: 32px;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
+  font-size: ${({ theme }) => theme.fonts.size.primary};
   font-weight: 500;
   line-height: 26.32px;
   letter-spacing: -0.03em;
   text-align: center;
-  color: #393939;
+  color: ${({ theme }) => theme.colors.primary};
   width: 100%;
 
   span {
-    color: #f17900;
+    color: ${({ theme }) => theme.colors.title};
   }
 `;
 

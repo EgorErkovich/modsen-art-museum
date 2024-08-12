@@ -3,12 +3,12 @@ import styled from 'styled-components';
 const StyledFavoritesPageTitle = styled.h1`
   display: flex;
   flex-direction: column;
-  font-family: Lexend Deca;
-  font-size: clamp(48px, 4.5vw, 64px);
-  font-weight: 700;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
+  font-size: clamp(48px, 4.5vw, ${({ theme }) => theme.fonts.size.title});
+  font-weight: ${({ theme }) => theme.fonts.weight.bold};
   line-height: 80px;
   text-align: center;
-  color: #393939;
+  color: ${({ theme }) => theme.colors.primary};
   width: clamp(500px, 47.5vw, 684px);
   margin-top: 120px;
 
@@ -16,7 +16,7 @@ const StyledFavoritesPageTitle = styled.h1`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f17900;
+    color: ${({ theme }) => theme.colors.title};
   }
 
   @media (max-width: 768px) {
@@ -41,7 +41,7 @@ const FavoritesImg = styled.svg`
   fill: none;
 
   path {
-    stroke: #f17900;
+    stroke: ${({ theme }) => theme.colors.title};
     stroke-width: 4.69765;
     stroke-linecap: round;
     stroke-linejoin: round;

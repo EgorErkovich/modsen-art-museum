@@ -13,11 +13,11 @@ const StyledInput = styled.input`
   background-image: url('/src/assets/search.png');
   background-repeat: no-repeat;
   background-position: right 16px center;
-  color: #f17900;
+  color: ${({ theme }) => theme.colors.title};
 
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 16px;
+  font-family: ${({ theme }) => theme.fonts.family.secondary};
+  font-weight: ${({ theme }) => theme.fonts.weight.regular};
+  font-size: ${({ theme }) => theme.fonts.size.secondary};
 
   margin-top: 40px;
 

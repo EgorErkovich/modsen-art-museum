@@ -61,3 +61,34 @@ export interface ISortBlockProps {
   onSortByAlphabet: () => void;
   onSortByDate: () => void;
 }
+
+export interface Theme {
+  colors: {
+    background: string;
+    border: string;
+    darkPrimary: string;
+    primary: string;
+    header: string;
+    secondary: string;
+    title: string;
+    isFavorite: string;
+    isNotFavorite: string;
+    favoriteHover: string;
+  };
+  fonts: {
+    family: {
+      regular: string;
+      secondary: string;
+    };
+    size: {
+      title: string;
+      primary: string;
+      secondary: string;
+    };
+    weight: {
+      regular: string;
+      extraRegular: string;
+      bold: string;
+    };
+  };
+}

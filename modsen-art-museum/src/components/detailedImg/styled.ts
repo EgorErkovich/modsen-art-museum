@@ -30,7 +30,7 @@ const FavoritesImg = styled.svg`
   height: 21px;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -50,13 +50,14 @@ const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
   padding: 17.54px;
   gap: 10.97px;
   border-radius: 35.09px;
-  opacity: 0px;
-  background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#ffffff')};
+  background-color: ${({ $isFavorite, theme }) =>
+    $isFavorite ? theme.colors.isFavorite : theme.colors.isNotFavorite};
   cursor: pointer;
   transition: 300ms;
 
   &:hover {
-    background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#f9f9f9')};
+    background-color: ${({ $isFavorite, theme }) =>
+      $isFavorite ? theme.colors.isFavorite : theme.colors.favoriteHover};
     transition: 300ms;
     filter: brightness(0.9);
   }

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledCard = styled.div<{ $isSmall: boolean }>`
   display: flex;
   align-items: center;
-  border: 1px solid #f0f1f1;
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
   ${({ $isSmall }) =>
     $isSmall
@@ -92,31 +92,6 @@ const CardInfo = styled.div<{ $isSmall: boolean }>`
     `}
 `;
 
-/* const CardInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 86%;
-  max-width: 334px;
-  max-height: 132px;
-  height: auto;
-  aspect-ratio: 1 / 0.4;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: calc((5 / 112) * 100vw - (240 / 7) * 1px);
-  padding: clamp(16px, 2.22vw, 32px) clamp(12px, 1.67vw, 24px) clamp(16px, 2.22vw, 32px)
-    clamp(12px, 1.67vw, 24px);
-  gap: 8px;
-  background-color: white;
-  border: 1px solid #f0f1f1;
-
-  @media (max-width: 768px) {
-    max-width: none;
-    max-height: none;
-    margin-bottom: 0px;
-  }
-`; */
-
 const InfoUser = styled.div`
   display: flex;
   flex-direction: column;
@@ -124,13 +99,13 @@ const InfoUser = styled.div`
   justify-content: space-between;
   min-height: clamp(0px, 6.81vw, 98px);
 
-  font-family: Lexend Deca;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
   font-size: clamp(11px, 1.07vw, 15.35px);
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.fonts.weight.bold};
   line-height: 26.32px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #393939;
+  color: ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 768px) {
     font-size: clamp(14px, 2.34vw, 18px);
@@ -147,13 +122,13 @@ const UserArtArtistBox = styled.div`
 `;
 
 const InfoUserArt = styled.p`
-  font-family: Lexend Deca;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
   font-size: clamp(14px, 1.22vw, 17.54px);
-  font-weight: 500;
+  font-weight: ${({ theme }) => theme.fonts.weight.extraRegular};
   line-height: clamp(18px, 1.83vw, 26.32px);
   letter-spacing: -0.03em;
   text-align: left;
-  color: #393939;
+  color: ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 768px) {
     font-size: clamp(16px, 2.86vw, 22px);
@@ -162,13 +137,13 @@ const InfoUserArt = styled.p`
 `;
 
 const InfoUserArtist = styled.p`
-  font-family: Lexend Deca;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
   font-size: clamp(11px, 1.07vw, 15.35px);
-  font-weight: 400;
+  font-weight: ${({ theme }) => theme.fonts.weight.regular};
   line-height: clamp(18px, 1.83vw, 26.32px);
   letter-spacing: -0.01em;
   text-align: left;
-  color: #e0a449;
+  color: ${({ theme }) => theme.colors.secondary};
 
   @media (max-width: 768px) {
     font-size: clamp(14px, 2.34vw, 18px);
@@ -191,7 +166,7 @@ const FavoritesImg = styled.svg`
   height: 21px;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -208,12 +183,14 @@ const CardInfoIcon = styled.div<{ $isFavorite: boolean }>`
   padding: 17.54px;
   gap: 10.97px;
   border-radius: 35.09px;
-  background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#f9f9f9')};
+  background-color: ${({ $isFavorite, theme }) =>
+    $isFavorite ? theme.colors.isFavorite : theme.colors.isNotFavorite};
   cursor: pointer;
   transition: 300ms;
 
   &:hover {
-    background-color: ${({ $isFavorite }) => ($isFavorite ? '#fbd7b24d' : '#f8f8f8')};
+    background-color: ${({ $isFavorite, theme }) =>
+      $isFavorite ? theme.colors.isFavorite : theme.colors.favoriteHover};
     transition: 300ms;
     filter: brightness(0.9);
   }

@@ -15,7 +15,7 @@ const BurgerIcon = styled.div<{ $isOpen: boolean }>`
   div {
     width: 30px;
     height: 3px;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.background};
     margin: 3px 0;
     transition: 0.3s;
   }
@@ -39,7 +39,7 @@ const MobileMenu = styled.div`
   position: absolute;
   top: 75px;
   right: 30px;
-  background-color: #333;
+  background-color: ${({ theme }) => theme.colors.darkPrimary};
   padding: 16px;
   border-radius: 8px;
   z-index: 10;
@@ -72,12 +72,12 @@ const HeaderHomeFavorites = styled.div`
 const HeaderOptionsText = styled.span`
   position: relative;
   top: 2px;
-  font-family: Inter;
+  font-family: ${({ theme }) => theme.fonts.family.secondary};
   font-size: 18px;
   font-weight: 400;
   line-height: 19.36px;
   text-align: left;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.background};
 
   @media (max-width: 500px) {
     font-size: 14px;
@@ -107,7 +107,7 @@ const FavoritesImg = styled.svg`
   height: 21px;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -120,7 +120,7 @@ const HomeImgHome = styled.svg`
   height: 23px;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -134,7 +134,7 @@ const HomeImgDoor = styled.svg`
   position: absolute;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;

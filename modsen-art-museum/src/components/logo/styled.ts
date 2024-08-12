@@ -20,7 +20,7 @@ const LogoRoof = styled.svg`
 
   path {
     fill: transparent;
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -32,7 +32,7 @@ const LogoColumn = styled.svg`
   height: 20px;
 
   path {
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -50,7 +50,7 @@ const LogoFoundation = styled.svg`
 
   path {
     fill: none;
-    stroke: #e0a449;
+    stroke: ${({ theme }) => theme.colors.secondary};
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -83,7 +83,7 @@ const LogoArtText = styled.svg`
   height: 14px;
 
   path {
-    fill: #e0a449;
+    fill: ${({ theme }) => theme.colors.secondary};
   }
 `;
 

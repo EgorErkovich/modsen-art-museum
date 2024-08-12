@@ -8,21 +8,21 @@ const StyledBlockTitle = styled.div`
 `;
 
 const BlockTitleTitle = styled.h2`
-  font-family: Lexend Deca;
-  font-size: 32px;
-  font-weight: 400;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
+  font-size: ${({ theme }) => theme.fonts.size.primary};
+  font-weight: ${({ theme }) => theme.fonts.weight.regular};
   line-height: 40px;
   text-align: left;
-  color: #393939;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const BlockTitleSubtitle = styled.h3`
-  font-family: Lexend Deca;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: ${({ theme }) => theme.fonts.family.regular};
+  font-size: ${({ theme }) => theme.fonts.size.secondary};
+  font-weight: ${({ theme }) => theme.fonts.weight.regular};
   line-height: 20px;
   text-align: left;
-  color: #e0a449;
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export { BlockTitleSubtitle, BlockTitleTitle, StyledBlockTitle };

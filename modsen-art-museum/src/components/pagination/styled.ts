@@ -52,8 +52,8 @@ const PageNumber = styled.button<{ $active?: boolean }>`
 const Arrow = styled.div<{ $direction: 'left' | 'right'; $isVisible: boolean }>`
   width: 10.65px;
   height: 10.03px;
-  border-top: 2px solid #393939;
-  border-right: 2px solid #393939;
+  border-top: 2px solid ${({ theme }) => theme.colors.primary};
+  border-right: 2px solid ${({ theme }) => theme.colors.primary};
   opacity: 1;
   transform: ${(props) => (props.$direction === 'right' ? 'rotate(45deg)' : 'rotate(-135deg)')};
   display: ${(props) => (props.$isVisible ? 'block' : 'none')};

@@ -31,6 +31,7 @@ export type {
   IPaginationState,
   IRootState,
   ISortBlockProps,
+  Theme,
 } from '@utils/interfaces';
 export {
   formatDimensions,
