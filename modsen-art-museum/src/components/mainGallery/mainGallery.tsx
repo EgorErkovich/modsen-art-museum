@@ -1,7 +1,7 @@
 import { StyledMainGallery, StyledMainGalleryBox } from '@components/mainGallery/styled';
 import { Card, IApiCardData, IRootState, Loader, trimArtistName, trimArtName } from '@index';
 import { addFavoriteId, AppDispatch, removeFavoriteId, setFavoriteIds } from '@store';
-import { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const toggleFavorite = (cardId: number, favoriteImageIds: number[], dispatch: AppDispatch) => {
@@ -26,6 +26,9 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
   const defaultImageSrc =
     'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
 
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [galleryHeight, setGalleryHeight] = useState<number>(0);
+
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favoriteImageIds');
     if (storedFavorites) {
@@ -33,6 +36,12 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
       dispatch(setFavoriteIds(favoriteIds));
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (galleryRef.current) {
+      setGalleryHeight(galleryRef.current.clientHeight);
+    }
+  }, [cards, isLoading]);
 
   const handleToggleFavorite = (cardId: number, event: React.MouseEvent) => {
     event.stopPropagation();
@@ -42,9 +51,9 @@ const MainGallery = ({ isLoading }: { isLoading: boolean }) => {
 
   return (
     <StyledMainGalleryBox>
-      <StyledMainGallery>
+      <StyledMainGallery ref={galleryRef}>
         {isLoading ? (
-          <Loader />
+          <Loader height={galleryHeight} minHeight={350} />
         ) : (
           cards.map((cardData: IApiCardData) => {
             const imageSrc = cardData.image_id

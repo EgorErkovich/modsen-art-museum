@@ -11,11 +11,20 @@ const LoaderBox = styled.div`
   justify-content: center;
 `;
 
+const LoaderContainer = styled.div<{ height: number; $minHeight: number }>`
+  height: ${({ height }) => `${height}px`};
+  min-height: ${({ $minHeight }) => `${$minHeight}px`};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const LoadingSpinnerText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
   height: 200px;
   aspect-ratio: 1 / 1.3;
@@ -46,4 +55,4 @@ const LoadingText = styled.span`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-export { LoaderBox, LoadingSpinnerText, LoadingText, Spinner };
+export { LoaderBox, LoaderContainer, LoadingSpinnerText, LoadingText, Spinner };

@@ -69,7 +69,7 @@ const FavoritesWorks = () => {
   };
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader height={400} minHeight={400} />;
   }
 
   return (
