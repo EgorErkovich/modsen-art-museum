@@ -1,3 +1,4 @@
+import { addFavoriteId, AppDispatch, removeFavoriteId } from '@store';
 import * as Yup from 'yup';
 
 const trimArtistName = (artist: string): string => {
@@ -48,34 +49,26 @@ const formatDimensions = (dimensions: string) => {
   return formattedDimensions;
 };
 
-const handleSortByAlphabet = (
-  sortOrder: 'asc' | 'desc',
-  setSortOrder: React.Dispatch<React.SetStateAction<'asc' | 'desc'>>,
-  setSortByDate: React.Dispatch<React.SetStateAction<'asc' | 'desc' | null>>
+const toggleFavorite = (
+  cardId: number,
+  event: React.MouseEvent,
+  favoriteImageIds: number[],
+  dispatch: AppDispatch
 ) => {
-  const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-  setSortOrder(newOrder);
-  setSortByDate(null);
+  event.stopPropagation();
+  event.preventDefault();
+
+  const updatedFavorites = favoriteImageIds.includes(cardId)
+    ? favoriteImageIds.filter((itemId) => itemId !== cardId)
+    : [...favoriteImageIds, cardId];
+
+  if (favoriteImageIds.includes(cardId)) {
+    dispatch(removeFavoriteId(cardId));
+  } else {
+    dispatch(addFavoriteId(cardId));
+  }
+
+  localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
 };
 
-const handleSortByDate = (
-  sortByDate: 'asc' | 'desc' | null,
-  setSortOrder: React.Dispatch<React.SetStateAction<'asc' | 'desc'>>,
-  setSortByDate: React.Dispatch<React.SetStateAction<'asc' | 'desc' | null>>,
-  fetchSortedData: (order: 'asc' | 'desc', sortBy: string) => Promise<void>
-) => {
-  const newDateOrder = sortByDate === 'asc' ? 'desc' : 'asc';
-  setSortByDate(newDateOrder);
-
-  setSortOrder(newDateOrder === 'asc' ? 'asc' : 'desc');
-  fetchSortedData(newDateOrder, 'date_start');
-};
-
-export {
-  formatDimensions,
-  handleSortByAlphabet,
-  handleSortByDate,
-  trimArtistName,
-  trimArtName,
-  validationSchema,
-};
+export { formatDimensions, toggleFavorite, trimArtistName, trimArtName, validationSchema };

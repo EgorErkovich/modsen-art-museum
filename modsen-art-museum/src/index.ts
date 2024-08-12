@@ -33,11 +33,4 @@ export type {
   ISortBlockProps,
   Theme,
 } from '@utils/interfaces';
-export {
-  formatDimensions,
-  handleSortByAlphabet,
-  handleSortByDate,
-  trimArtistName,
-  trimArtName,
-  validationSchema,
-} from '@utils/utils';
+export { formatDimensions, trimArtistName, trimArtName, validationSchema } from '@utils/utils';

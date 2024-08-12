@@ -6,48 +6,18 @@ import {
   PaginationContainer,
 } from '@components/pagination/styled';
 import { IRootState } from '@index';
-import { AppDispatch, setCards, setCurrentPage, setTotalPages } from '@store';
+import { setCurrentPage } from '@store';
+import { fetchPaginationArtworks } from '@utils/api';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const ITEMS_PER_PAGE = 3;
 const MAX_VISIBLE_PAGES = 4;
-
-const fetchArtworks = async (
-  page: number,
-  inputValue: string,
-  sortOrder: 'asc' | 'desc' | '',
-  sortBy: string,
-  setIsLoading: (loading: boolean) => void,
-  dispatch: AppDispatch
-) => {
-  setIsLoading(true);
-  try {
-    const sortParam = sortOrder ? `&sort[${sortBy}][order]=${sortOrder}` : '';
-    const response = await fetch(
-      `https://api.artic.edu/api/v1/artworks/search?limit=${ITEMS_PER_PAGE}&page=${page}&fields=id,title,artist_display,image_id,is_public_domain,date_start${inputValue ? `&q=${inputValue}` : ''}${sortParam}`
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    dispatch(setCards(data.data));
-    dispatch(setTotalPages(data.pagination.total_pages));
-  } catch (error) {
-    console.error('Loading error:', error);
-  } finally {
-    setIsLoading(false);
-  }
-};
 
 const Pagination: React.FC<{ setIsLoading: (loading: boolean) => void }> = ({ setIsLoading }) => {
   const dispatch = useDispatch();
   const currentPage = useSelector((state: IRootState) => state.pagination.currentPage);
   const totalPages = useSelector((state: IRootState) => state.pagination.totalPages);
   const inputValue = useSelector((state: IRootState) => state.input.value);
-
   const sortOrder = useSelector((state: IRootState) => state.pagination.sortOrder);
   const sortBy = useSelector((state: IRootState) => state.pagination.sortBy);
 
@@ -58,7 +28,7 @@ const Pagination: React.FC<{ setIsLoading: (loading: boolean) => void }> = ({ se
 
   const fetchData = useCallback(
     (page: number) => {
-      fetchArtworks(page, inputValue, sortOrder, sortBy, setIsLoading, dispatch);
+      fetchPaginationArtworks(page, inputValue, sortOrder, sortBy, setIsLoading, dispatch);
     },
     [dispatch, setIsLoading, inputValue, sortOrder, sortBy]
   );

@@ -1,28 +1,9 @@
 import StyledOtherWorks from '@components/otherWorks/styled';
-import { Card, IApiCardData, IMainCardData, IRootState, Loader } from '@index';
+import { Card, IMainCardData, IRootState, Loader } from '@index';
+import { fetchArtworks, mapArtworks } from '@src/utils/api';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-const fetchArtworks = async () => {
-  const response = await fetch(
-    'https://api.artic.edu/api/v1/artworks?page=1&limit=9&fields=id,title,artist_display,image_id,is_public_domain'
-  );
-  const data = await response.json();
-
-  return data.data;
-};
-
-const mapArtworks = (data: IApiCardData[], favoriteImageIds: number[]): IMainCardData[] => {
-  return data.map((work: IApiCardData) => ({
-    id: work.id,
-    src: `https://www.artic.edu/iiif/2/${work.image_id}/full/843,/0/default.jpg`,
-    artName: work.title,
-    artist: work.artist_display,
-    isPublic: work.is_public_domain,
-    isFavorite: favoriteImageIds.includes(work.id),
-  }));
-};
 
 const OtherWorks = () => {
   const [worksData, setWorksData] = useState<IMainCardData[]>([]);
@@ -75,7 +56,7 @@ const OtherWorks = () => {
   );
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader height={400} minHeight={400} />;
   }
 
   return (
