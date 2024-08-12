@@ -16,16 +16,23 @@ const MAX_VISIBLE_PAGES = 4;
 const fetchArtworks = async (
   page: number,
   inputValue: string,
+  sortOrder: 'asc' | 'desc' | '',
+  sortBy: string,
   setIsLoading: (loading: boolean) => void,
   dispatch: AppDispatch
 ) => {
   setIsLoading(true);
   try {
+    const sortParam = sortOrder ? `&sort[${sortBy}][order]=${sortOrder}` : '';
     const response = await fetch(
-      `https://api.artic.edu/api/v1/artworks?limit=${ITEMS_PER_PAGE}&page=${page}&fields=id,title,artist_display,image_id,is_public_domain${inputValue ? `&q=${inputValue}` : ''}`
+      `https://api.artic.edu/api/v1/artworks/search?limit=${ITEMS_PER_PAGE}&page=${page}&fields=id,title,artist_display,image_id,is_public_domain,date_start${inputValue ? `&q=${inputValue}` : ''}${sortParam}`
     );
-    const data = await response.json();
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
     dispatch(setCards(data.data));
     dispatch(setTotalPages(data.pagination.total_pages));
   } catch (error) {
@@ -41,6 +48,9 @@ const Pagination: React.FC<{ setIsLoading: (loading: boolean) => void }> = ({ se
   const totalPages = useSelector((state: IRootState) => state.pagination.totalPages);
   const inputValue = useSelector((state: IRootState) => state.input.value);
 
+  const sortOrder = useSelector((state: IRootState) => state.pagination.sortOrder);
+  const sortBy = useSelector((state: IRootState) => state.pagination.sortBy);
+
   const [startPage, setStartPage] = useState(
     Math.floor((currentPage - 1) / MAX_VISIBLE_PAGES) * MAX_VISIBLE_PAGES + 1
   );
@@ -48,14 +58,20 @@ const Pagination: React.FC<{ setIsLoading: (loading: boolean) => void }> = ({ se
 
   const fetchData = useCallback(
     (page: number) => {
-      fetchArtworks(page, inputValue, setIsLoading, dispatch);
+      fetchArtworks(page, inputValue, sortOrder, sortBy, setIsLoading, dispatch);
     },
-    [dispatch, setIsLoading, inputValue]
+    [dispatch, setIsLoading, inputValue, sortOrder, sortBy]
   );
 
   useEffect(() => {
     fetchData(activePage);
-  }, [fetchData, activePage]);
+  }, [activePage, fetchData]);
+
+  useEffect(() => {
+    setActivePage(1);
+    setStartPage(1);
+    fetchData(1);
+  }, [sortOrder, sortBy, fetchData]);
 
   useEffect(() => {
     if (inputValue) {

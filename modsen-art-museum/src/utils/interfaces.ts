@@ -33,6 +33,8 @@ export interface IPaginationState {
   currentPage: number;
   totalPages: number;
   cards: IApiCardData[];
+  sortOrder: 'asc' | 'desc' | '';
+  sortBy: string;
 }
 
 export interface IFavoritesState {

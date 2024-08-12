@@ -31,6 +31,8 @@ const initialPaginationState: IPaginationState = {
   currentPage: 1,
   totalPages: 1,
   cards: [],
+  sortOrder: '',
+  sortBy: '',
 };
 
 const paginationSlice = createSlice({
@@ -45,6 +47,12 @@ const paginationSlice = createSlice({
     },
     setCards: (state, action: PayloadAction<IApiCardData[]>) => {
       return { ...state, cards: action.payload };
+    },
+    setSortOrder: (state, action: PayloadAction<'asc' | 'desc' | ''>) => {
+      return { ...state, sortOrder: action.payload };
+    },
+    setSortBy: (state, action: PayloadAction<string>) => {
+      return { ...state, sortBy: action.payload };
     },
   },
 });
@@ -71,7 +79,8 @@ const inputSlice = createSlice({
 });
 
 export const { addFavoriteId, removeFavoriteId, setFavoriteIds } = favoritesSlice.actions;
-export const { setCurrentPage, setTotalPages, setCards } = paginationSlice.actions;
+export const { setCurrentPage, setTotalPages, setCards, setSortOrder, setSortBy } =
+  paginationSlice.actions;
 export const { setInputValue, clearInputValue } = inputSlice.actions;
 
 const store = configureStore({

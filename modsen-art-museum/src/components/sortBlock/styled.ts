@@ -20,4 +20,20 @@ const SortButton = styled.button`
   }
 `;
 
-export { SortBlockContainer, SortButton };
+const ArrowUp = styled.span`
+  display: inline-block;
+  margin-left: 5px;
+  &:before {
+    content: '▲';
+  }
+`;
+
+const ArrowDown = styled.span`
+  display: inline-block;
+  margin-left: 5px;
+  &:before {
+    content: '▼';
+  }
+`;
+
+export { ArrowDown, ArrowUp, SortBlockContainer, SortButton };
