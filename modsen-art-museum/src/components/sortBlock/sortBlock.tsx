@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp, SortBlockContainer, SortButton } from '@components/sortBlock/styled';
 import { ISortBlockProps } from '@src/index';
+import { DEFAULT_SORT_ORDER } from '@utils/constants';
 import React, { useState } from 'react';
 
 const SortBlock: React.FC<ISortBlockProps> = ({ onSortByAlphabet, onSortByDate }) => {
@@ -8,8 +9,8 @@ const SortBlock: React.FC<ISortBlockProps> = ({ onSortByAlphabet, onSortByDate }
 
   const toggleAlphabetSortOrder = () => {
     setAlphabetSortOrder((prevOrder) => {
-      const newOrder = prevOrder === '' ? 'asc' : prevOrder === 'asc' ? 'desc' : '';
-      setDateSortOrder('');
+      const newOrder = prevOrder === DEFAULT_SORT_ORDER ? 'asc' : prevOrder === 'asc' ? 'desc' : '';
+      setDateSortOrder(DEFAULT_SORT_ORDER);
 
       return newOrder;
     });
@@ -17,8 +18,8 @@ const SortBlock: React.FC<ISortBlockProps> = ({ onSortByAlphabet, onSortByDate }
 
   const toggleDateSortOrder = () => {
     setDateSortOrder((prevOrder) => {
-      const newOrder = prevOrder === '' ? 'asc' : prevOrder === 'asc' ? 'desc' : '';
-      setAlphabetSortOrder('');
+      const newOrder = prevOrder === DEFAULT_SORT_ORDER ? 'asc' : prevOrder === 'asc' ? 'desc' : '';
+      setAlphabetSortOrder(DEFAULT_SORT_ORDER);
 
       return newOrder;
     });

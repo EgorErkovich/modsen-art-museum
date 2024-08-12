@@ -1,14 +1,12 @@
 import { DetailedImg, DetailedInfo, IDetailedInfoProps, IRootState, Loader } from '@index';
 import StyledDetailInfoPage from '@pages/detailInfoPage/styled';
 import { setFavoriteIds } from '@store';
+import { DEFAULT_IMAGE_SRC } from '@utils/constants';
 import useFetchArtData from '@utils/hooks';
 import { toggleFavorite } from '@utils/utils';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
-const defaultImageSrc =
-  'https://yt3.googleusercontent.com/iRLpuvr-WoAkDmOmXQiVnk7Gf4knJ6_OmIqZRmal4FeFxwbPLkMwIWm4QZlvH9t2GojQWZ4P=s900-c-k-c0x00ffffff-no-rj';
 
 const DetailInfoPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -36,7 +34,7 @@ const DetailInfoPage: React.FC = () => {
   return (
     <StyledDetailInfoPage>
       <DetailedImg
-        src={artData ? artData.src : defaultImageSrc}
+        src={artData ? artData.src : DEFAULT_IMAGE_SRC}
         id={artData ? artData.id : 0}
         isFavorite={artData ? artData.isFavorite : false}
         onToggleFavorite={handleToggleFavorite}

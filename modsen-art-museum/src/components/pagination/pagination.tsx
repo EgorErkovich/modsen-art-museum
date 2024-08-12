@@ -8,10 +8,9 @@ import {
 import { IRootState } from '@index';
 import { setCurrentPage } from '@store';
 import { fetchPaginationArtworks } from '@utils/api';
+import { MAX_VISIBLE_PAGES } from '@utils/constants';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-const MAX_VISIBLE_PAGES = 4;
 
 const Pagination: React.FC<{ setIsLoading: (loading: boolean) => void }> = ({ setIsLoading }) => {
   const dispatch = useDispatch();

@@ -1,4 +1,5 @@
 import { formatDimensions, IDetailedInfoProps } from '@index';
+import { API_MAIN_DATA, API_URL, IMAGE_BASE_URL, IMAGE_FULL_SIZE } from '@utils/constants';
 import { useEffect, useState } from 'react';
 
 const useFetchArtData = (id: string | undefined, favoriteImageIds: number[]) => {
@@ -15,7 +16,7 @@ const useFetchArtData = (id: string | undefined, favoriteImageIds: number[]) => 
     const fetchArtData = async () => {
       try {
         const response = await fetch(
-          `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,image_id,artist_display,date_display,dimensions,credit_line,category_titles,is_public_domain,nationality`
+          `${API_URL}/${id}?${API_MAIN_DATA},date_display,dimensions,credit_line,category_titles,nationality`
         );
 
         if (!response.ok) throw new Error('Network response was not ok');
@@ -38,7 +39,7 @@ const useFetchArtData = (id: string | undefined, favoriteImageIds: number[]) => 
 
           const convertedData: IDetailedInfoProps = {
             id: Number(id),
-            src: `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`,
+            src: `${IMAGE_BASE_URL}${imageId}${IMAGE_FULL_SIZE}`,
             artName: title,
             artist: artistDisplay,
             years,

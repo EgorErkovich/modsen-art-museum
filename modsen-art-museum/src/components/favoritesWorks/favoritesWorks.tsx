@@ -2,6 +2,7 @@ import { IsEmptyText, StyledFavoritesWorks } from '@components/favoritesWorks/st
 import { Card, IMainCardData, IRootState, Loader } from '@index';
 import { addFavoriteId, removeFavoriteId } from '@store';
 import { fetchFavoritesData } from '@utils/api';
+import { LOADER_HEIGHT, LOCAL_STORAGE_FAVORITES_KEY, MIN_LOADER_HEIGHT } from '@utils/constants';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -29,12 +30,12 @@ const FavoritesWorks = () => {
       dispatch(addFavoriteId(cardId));
     }
 
-    localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
+    localStorage.setItem(LOCAL_STORAGE_FAVORITES_KEY, JSON.stringify(updatedFavorites));
     setWorksData((prevWorks) => prevWorks.filter((work) => work.id !== cardId));
   };
 
   if (isLoading) {
-    return <Loader height={400} minHeight={400} />;
+    return <Loader height={LOADER_HEIGHT} minHeight={MIN_LOADER_HEIGHT} />;
   }
 
   return (

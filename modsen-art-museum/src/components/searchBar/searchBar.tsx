@@ -7,6 +7,7 @@ import {
 import { IRootState, validationSchema } from '@index';
 import { AppDispatch, setCurrentPage, setInputValue } from '@store';
 import { fetchArtworksSearchBar } from '@utils/api';
+import { DEBOUNCE_TIME } from '@utils/constants';
 import { ErrorMessage, Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,7 +39,7 @@ const SearchBar: React.FC = () => {
     const timeoutId = setTimeout(() => {
       setDebouncedInputValue(inputValue);
       dispatch(setInputValue(inputValue));
-    }, 1000);
+    }, DEBOUNCE_TIME);
 
     return () => clearTimeout(timeoutId);
   }, [inputValue, dispatch]);

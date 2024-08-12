@@ -1,13 +1,11 @@
 import { BlockTitle, FavoritesPageTitle, FavoritesWorks } from '@index';
+import { SUBTITLE_SAVED, TITLE_SAVED } from '@utils/constants';
 
 const FavoritesPage = () => {
-  const titleSaved = 'Your favorites list';
-  const subtitleSaved = 'Saved by you';
-
   return (
     <>
       <FavoritesPageTitle />
-      <BlockTitle title={titleSaved} subtitle={subtitleSaved} />
+      <BlockTitle title={TITLE_SAVED} subtitle={SUBTITLE_SAVED} />
       <FavoritesWorks />
     </>
   );

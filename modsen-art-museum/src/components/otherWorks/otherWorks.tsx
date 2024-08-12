@@ -2,6 +2,7 @@ import StyledOtherWorks from '@components/otherWorks/styled';
 import { Card, IMainCardData, IRootState, Loader } from '@index';
 import { fetchArtworks, mapArtworks } from '@src/utils/api';
 import { addFavoriteId, removeFavoriteId } from '@store';
+import { LOADER_HEIGHT, LOCAL_STORAGE_FAVORITES_KEY, MIN_LOADER_HEIGHT } from '@utils/constants';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -41,7 +42,7 @@ const OtherWorks = () => {
         ? favoriteImageIds.filter((id) => id !== cardId)
         : [...favoriteImageIds, cardId];
 
-      localStorage.setItem('favoriteImageIds', JSON.stringify(updatedFavorites));
+      localStorage.setItem(LOCAL_STORAGE_FAVORITES_KEY, JSON.stringify(updatedFavorites));
     },
     [favoriteImageIds, dispatch]
   );
@@ -56,7 +57,7 @@ const OtherWorks = () => {
   );
 
   if (isLoading) {
-    return <Loader height={400} minHeight={400} />;
+    return <Loader height={LOADER_HEIGHT} minHeight={MIN_LOADER_HEIGHT} />;
   }
 
   return (

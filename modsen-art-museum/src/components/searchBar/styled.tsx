@@ -29,7 +29,7 @@ const StyledInput = styled.input`
 
   @media (max-width: 768px) {
     height: 48px;
-    width: 80%;
+    width: 100%;
     background-size: 25px;
   }
 `;
@@ -45,6 +45,10 @@ const InputContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: auto;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const ErrorText = styled.div`

@@ -1,4 +1,12 @@
 import { AppDispatch, setCards, setTotalPages } from '@store';
+import {
+  API_MAIN_DATA,
+  API_URL,
+  IMAGE_BASE_URL,
+  IMAGE_FULL_SIZE,
+  ITEMS_PER_PAGE,
+  LOCAL_STORAGE_FAVORITES_KEY,
+} from '@utils/constants';
 import { IApiCardData, IMainCardData } from '@utils/interfaces';
 
 const fetchPaginationArtworks = async (
@@ -9,13 +17,12 @@ const fetchPaginationArtworks = async (
   setIsLoading: (loading: boolean) => void,
   dispatch: AppDispatch
 ) => {
-  const ITEMS_PER_PAGE = 3;
   setIsLoading(true);
   try {
     const sortParam = sortOrder ? `&sort[${sortBy}][order]=${sortOrder}` : '';
 
     const response = await fetch(
-      `https://api.artic.edu/api/v1/artworks/search?limit=${ITEMS_PER_PAGE}&page=${page}&fields=id,title,artist_display,image_id,is_public_domain,date_start${inputValue ? `&q=${inputValue}` : ''}${sortParam}`
+      `${API_URL}/search?limit=${ITEMS_PER_PAGE}&page=${page}&${API_MAIN_DATA},date_start${inputValue ? `&q=${inputValue}` : ''}${sortParam}`
     );
 
     if (!response.ok) {
@@ -38,15 +45,13 @@ const fetchFavoritesData = async (
 ) => {
   setIsLoading(true);
   try {
-    const storedFavorites = localStorage.getItem('favoriteImageIds');
+    const storedFavorites = localStorage.getItem(LOCAL_STORAGE_FAVORITES_KEY);
     if (storedFavorites) {
       const favoriteIds = JSON.parse(storedFavorites) as number[];
 
       if (favoriteIds.length > 0) {
         const idsParam = favoriteIds.join(',');
-        const response = await fetch(
-          `https://api.artic.edu/api/v1/artworks?ids=${idsParam}&fields=id,title,artist_display,image_id,is_public_domain`
-        );
+        const response = await fetch(`${API_URL}?ids=${idsParam}&${API_MAIN_DATA}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -55,7 +60,7 @@ const fetchFavoritesData = async (
         const data = await response.json();
         const artworks: IMainCardData[] = data.data.map((work: IApiCardData) => ({
           id: work.id,
-          src: `https://www.artic.edu/iiif/2/${work.image_id}/full/843,/0/default.jpg`,
+          src: `${IMAGE_BASE_URL}${work.image_id}${IMAGE_FULL_SIZE}`,
           artName: work.title,
           artist: work.artist_display,
           isPublic: work.is_public_domain,
@@ -79,7 +84,7 @@ const fetchArtworksSearchBar = async (
 ) => {
   try {
     const response = await fetch(
-      `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue.replace(' ', '%20')}&page=${currentPage}&limit=3`
+      `${API_URL}/search?q=${debouncedInputValue.replace(' ', '%20')}&page=${currentPage}&limit=${ITEMS_PER_PAGE}`
     );
 
     if (!response.ok) {
@@ -93,9 +98,7 @@ const fetchArtworksSearchBar = async (
     const artworkIds = data.data.map((artwork: IApiCardData) => artwork.id).join(',');
 
     if (artworkIds) {
-      const artworksResponse = await fetch(
-        `https://api.artic.edu/api/v1/artworks?ids=${artworkIds}&fields=id,title,artist_display,image_id,is_public_domain`
-      );
+      const artworksResponse = await fetch(`${API_URL}?ids=${artworkIds}&${API_MAIN_DATA}`);
 
       if (!artworksResponse.ok) {
         throw new Error('Network response was not ok for artwork details');
@@ -118,9 +121,7 @@ const fetchArtworksSearchBar = async (
 };
 
 const fetchArtworks = async () => {
-  const response = await fetch(
-    'https://api.artic.edu/api/v1/artworks?page=1&limit=9&fields=id,title,artist_display,image_id,is_public_domain'
-  );
+  const response = await fetch(`${API_URL}?page=1&limit=9&${API_MAIN_DATA}`);
   const data = await response.json();
 
   return data.data;
