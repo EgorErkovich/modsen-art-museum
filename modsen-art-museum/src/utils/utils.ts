@@ -33,16 +33,15 @@ const formatDimensions = (dimensions: string) => {
   let slicedDimensions = '';
 
   if (sheetIndex === -1) {
-    slicedDimensions = `Sheet: ${dimensions
-      .split('\n')[0]
-      .slice(dimensions.split('\n')[0].indexOf(':') + 2, framedIndex)
-      .trim()}`;
+    slicedDimensions = `Sheet: ${dimensions.split('\n')[0].slice(0, framedIndex).trim()}`;
   } else {
     slicedDimensions = dimensions.split('\n')[0].slice(sheetIndex, framedIndex).trim();
   }
 
   const cmPart = slicedDimensions.split('(')[0].replace('Sheet:', '').replace('a)', '').trim();
-  const inPart = slicedDimensions.split('(')[1].replace(')', '').trim();
+  const inPart = slicedDimensions.split('(')[1]
+    ? slicedDimensions.split('(')[1].replace(')', '').trim()
+    : '';
 
   formattedDimensions = `Sheet: ${inPart} (${cmPart})`;
 

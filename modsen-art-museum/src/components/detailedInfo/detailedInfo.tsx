@@ -11,8 +11,18 @@ import {
 import { IDetailedInfoProps } from '@index';
 
 const DetailedInfo: React.FC<{ artDetails: IDetailedInfoProps }> = ({ artDetails }) => {
+  const checkedArtDetails = artDetails || {
+    artName: 'No name',
+    artist: 'No name',
+    years: 'unknown',
+    nationality: 'unknown',
+    creditLine: 'unknown',
+    repository: 'unknown',
+    isPublic: false,
+    dimensions: 'unknown',
+  };
   const { artName, artist, years, nationality, creditLine, repository, isPublic, dimensions } =
-    artDetails;
+    checkedArtDetails;
   const dimensionsArray = dimensions.split(' ');
   const sheetWord = dimensionsArray.shift();
   const dimensionsFormatted = dimensionsArray.join(' ');

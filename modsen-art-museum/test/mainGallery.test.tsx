@@ -1,8 +1,10 @@
 import MainGallery from '@components/mainGallery/mainGallery';
 import { render, screen, waitFor } from '@testing-library/react';
+import theme from '@utils/theme';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
+import { ThemeProvider } from 'styled-components';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockStore = configureStore([]);
@@ -52,7 +54,9 @@ describe('MainGallery Component', () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <MainGallery isLoading={true} />
+          <ThemeProvider theme={theme}>
+            <MainGallery isLoading={true} />
+          </ThemeProvider>
         </MemoryRouter>
       </Provider>
     );
@@ -64,7 +68,9 @@ describe('MainGallery Component', () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <MainGallery isLoading={false} />
+          <ThemeProvider theme={theme}>
+            <MainGallery isLoading={false} />
+          </ThemeProvider>
         </MemoryRouter>
       </Provider>
     );

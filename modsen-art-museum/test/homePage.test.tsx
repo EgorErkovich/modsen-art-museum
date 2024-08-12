@@ -1,15 +1,25 @@
 import HomePage from '@pages/homePage/homePage';
-import { setCards } from '@store';
+import { setCards, setFavoriteIds, setSortBy, setSortOrder } from '@store';
 import { render, screen } from '@testing-library/react';
+import { DEFAULT_SORT_BY_DATE, DEFAULT_SORT_ORDER } from '@utils/constants';
+import theme from '@utils/theme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { ThemeProvider } from 'styled-components';
 
 const mockStore = configureStore([]);
 
 const initialState = {
-  pagination: { currentPage: 1 },
+  pagination: {
+    currentPage: 1,
+    sortOrder: DEFAULT_SORT_ORDER,
+    sortBy: DEFAULT_SORT_BY_DATE,
+    cards: [],
+  },
   input: { value: '' },
-  cards: [],
+  favorites: {
+    favoriteIds: [], // Убедитесь, что Это состояние инициализировано
+  },
 };
 
 describe('HomePage Component', () => {
@@ -28,16 +38,34 @@ describe('HomePage Component', () => {
         },
       ])
     );
+    store.dispatch(setSortOrder(DEFAULT_SORT_ORDER));
+    store.dispatch(setSortBy(DEFAULT_SORT_BY_DATE));
+    store.dispatch(setFavoriteIds([])); // Для инициализации избранного если необходимо
   });
 
-  it('renders main components', () => {
+  it('renders main components correctly', () => {
     render(
       <Provider store={store}>
-        <HomePage />
+        <ThemeProvider theme={theme}>
+          <HomePage />
+        </ThemeProvider>
       </Provider>
     );
 
     expect(screen.getByText(/Our special gallery/i)).toBeInTheDocument();
     expect(screen.getByText(/Topics for you/i)).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+  });
+
+  it('renders other works section', () => {
+    render(
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <HomePage />
+        </ThemeProvider>
+      </Provider>
+    );
+
+    expect(screen.getByText(/Other Works/i)).toBeInTheDocument();
   });
 });

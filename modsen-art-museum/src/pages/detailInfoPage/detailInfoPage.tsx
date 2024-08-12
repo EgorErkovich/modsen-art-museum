@@ -1,7 +1,7 @@
 import { DetailedImg, DetailedInfo, IDetailedInfoProps, IRootState, Loader } from '@index';
 import StyledDetailInfoPage from '@pages/detailInfoPage/styled';
 import { setFavoriteIds } from '@store';
-import { DEFAULT_IMAGE_SRC } from '@utils/constants';
+import { DEFAULT_IMAGE_SRC, LOCAL_STORAGE_FAVORITES_KEY } from '@utils/constants';
 import useFetchArtData from '@utils/hooks';
 import { toggleFavorite } from '@utils/utils';
 import React, { useEffect } from 'react';
@@ -16,7 +16,7 @@ const DetailInfoPage: React.FC = () => {
   const { artData, loading } = useFetchArtData(id, favoriteImageIds);
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem('favoriteImageIds');
+    const storedFavorites = localStorage.getItem(LOCAL_STORAGE_FAVORITES_KEY);
     if (storedFavorites) {
       const favoriteIds = JSON.parse(storedFavorites) as number[];
       dispatch(setFavoriteIds(favoriteIds));

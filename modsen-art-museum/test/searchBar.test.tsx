@@ -1,9 +1,11 @@
 import SearchBar from '@components/searchBar/searchBar';
 import { IRootState } from '@index';
 import { fireEvent, render, screen } from '@testing-library/react';
+import theme from '@utils/theme';
 import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { ThemeProvider } from 'styled-components';
 import { vi } from 'vitest';
 
 const mockStore = configureStore([]);
@@ -13,6 +15,8 @@ const initialState: IRootState = {
     currentPage: 1,
     totalPages: 0,
     cards: [],
+    sortOrder: '',
+    sortBy: '',
   },
   favorites: {
     favoriteIds: [],
@@ -32,7 +36,11 @@ describe('SearchBar Component', () => {
   it('renders the search input', () => {
     render(
       <Provider store={store}>
-        <SearchBar />
+        <ThemeProvider theme={theme}>
+          {' '}
+          {/* Оборачиваем в ThemeProvider */}
+          <SearchBar />
+        </ThemeProvider>
       </Provider>
     );
 
@@ -43,7 +51,9 @@ describe('SearchBar Component', () => {
   it('updates input value correctly', async () => {
     render(
       <Provider store={store}>
-        <SearchBar />
+        <ThemeProvider theme={theme}>
+          <SearchBar />
+        </ThemeProvider>
       </Provider>
     );
 
@@ -59,7 +69,9 @@ describe('SearchBar Component', () => {
   it('validates input based on regex', async () => {
     render(
       <Provider store={store}>
-        <SearchBar />
+        <ThemeProvider theme={theme}>
+          <SearchBar />
+        </ThemeProvider>
       </Provider>
     );
 
